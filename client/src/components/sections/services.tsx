@@ -79,8 +79,8 @@ export function ServicesSection() {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -8 }}
             >
-              <div className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6`}>
-                <service.icon className="w-8 h-8 text-white" />
+              <div className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
+                <service.icon className="w-8 h-8 text-white stroke-2" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>

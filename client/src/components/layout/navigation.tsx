@@ -27,7 +27,7 @@ export function Navigation() {
   return (
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-effect' : 'bg-transparent'
+        isScrolled ? 'glass-effect backdrop-blur-lg bg-white/90' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -36,7 +36,9 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <motion.div 
-            className="text-2xl font-bold text-white"
+            className={`text-2xl font-bold transition-colors duration-300 ${
+              isScrolled ? 'text-slate-900' : 'text-white'
+            }`}
             whileHover={{ scale: 1.05 }}
           >
             Nexulsly
@@ -47,13 +49,21 @@ export function Navigation() {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="text-white hover:text-blue-300 transition-colors duration-200 capitalize"
+                className={`transition-colors duration-300 capitalize ${
+                  isScrolled 
+                    ? 'text-slate-700 hover:text-primary-600' 
+                    : 'text-white hover:text-blue-300'
+                }`}
               >
                 {item}
               </button>
             ))}
             <Button 
-              className="bg-white text-primary-600 hover:bg-blue-50"
+              className={`transition-colors duration-300 ${
+                isScrolled 
+                  ? 'bg-primary-600 text-white hover:bg-primary-700' 
+                  : 'bg-white text-primary-600 hover:bg-blue-50'
+              }`}
               onClick={() => scrollToSection('contact')}
             >
               Get Started
@@ -63,7 +73,9 @@ export function Navigation() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-white"
+            className={`md:hidden transition-colors duration-300 ${
+              isScrolled ? 'text-slate-900' : 'text-white'
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

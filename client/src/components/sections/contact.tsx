@@ -32,7 +32,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Office',
-    value: 'San Francisco, CA',
+    value: 'Ottawa, ON',
     bgColor: 'bg-purple-100',
     iconColor: 'text-purple-600'
   }

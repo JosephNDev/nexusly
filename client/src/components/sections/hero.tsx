@@ -50,7 +50,7 @@ export function HeroSection() {
           >
             <Button
               size="lg"
-              className="bg-white text-primary-600 hover:bg-blue-50 text-lg px-8 py-4 rounded-full font-semibold shadow-2xl"
+              className="bg-white text-primary-600 hover:bg-blue-50 text-lg px-8 py-4 rounded-full font-semibold shadow-2xl border-0"
               onClick={() => scrollToSection('contact')}
             >
               Start Your Project
@@ -58,7 +58,7 @@ export function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 text-lg px-8 py-4 rounded-full font-semibold"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 text-lg px-8 py-4 rounded-full font-semibold bg-transparent"
               onClick={() => scrollToSection('services')}
             >
               View Our Work

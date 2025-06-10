@@ -133,7 +133,7 @@ export function Footer() {
             <ul className="space-y-2 text-blue-200">
               <li>hello@nexulsly.com</li>
               <li>+1 (555) 123-4567</li>
-              <li>San Francisco, CA</li>
+              <li>Ottawa, ON</li>
             </ul>
           </motion.div>
         </div>
