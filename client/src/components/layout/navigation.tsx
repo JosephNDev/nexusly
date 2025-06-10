@@ -62,7 +62,7 @@ export function Navigation() {
               className={`transition-colors duration-300 ${
                 isScrolled 
                   ? 'bg-primary-600 text-white hover:bg-primary-700' 
-                  : 'bg-white text-primary-600 hover:bg-blue-50'
+                  : 'bg-white text-primary-600 hover:bg-white/90'
               }`}
               onClick={() => scrollToSection('contact')}
             >
