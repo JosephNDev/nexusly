@@ -1,47 +1,50 @@
-import { motion } from 'framer-motion';
-import { Monitor, Palette, Zap } from 'lucide-react';
-import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import { motion } from "framer-motion";
+import { Monitor, Palette, Zap } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const services = [
   {
     icon: Monitor,
-    title: 'Web Development',
-    description: 'Custom web applications built with cutting-edge technologies for optimal performance and user experience.',
+    title: "Web Development",
+    description:
+      "Custom web applications built with cutting-edge technologies for optimal performance and user experience.",
     features: [
-      'React & Next.js Development',
-      'Progressive Web Apps',
-      'API Integration'
+      "React & Next.js Development",
+      "Progressive Web Apps",
+      "API Integration",
     ],
-    color: 'from-primary-500 to-purple-600',
-    iconBg: 'bg-gradient-to-r from-primary-500 to-purple-600',
-    textColor: 'text-primary-600'
+    color: "from-primary-500 to-purple-600",
+    iconBg: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    textColor: "text-primary-600",
   },
   {
     icon: Palette,
-    title: 'UI/UX Design',
-    description: 'Beautiful, intuitive designs that create meaningful connections between your brand and users.',
+    title: "UI/UX Design",
+    description:
+      "Beautiful, intuitive designs that create meaningful connections between your brand and users.",
     features: [
-      'User Research & Testing',
-      'Prototyping & Wireframing',
-      'Design Systems'
+      "User Research & Testing",
+      "Prototyping & Wireframing",
+      "Design Systems",
     ],
-    color: 'from-green-500 to-teal-600',
-    iconBg: 'bg-gradient-to-r from-green-500 to-teal-600',
-    textColor: 'text-green-600'
+    color: "from-green-500 to-teal-600",
+    iconBg: "bg-gradient-to-r from-green-500 to-teal-600",
+    textColor: "text-green-600",
   },
   {
     icon: Zap,
-    title: 'Performance Optimization',
-    description: 'Lightning-fast websites that convert visitors into customers with superior performance metrics.',
+    title: "Performance Optimization",
+    description:
+      "Lightning-fast websites that convert visitors into customers with superior performance metrics.",
     features: [
-      'Core Web Vitals Optimization',
-      'SEO Implementation',
-      'Speed Optimization'
+      "Core Web Vitals Optimization",
+      "SEO Implementation",
+      "Speed Optimization",
     ],
-    color: 'from-purple-500 to-pink-600',
-    iconBg: 'bg-gradient-to-r from-purple-500 to-pink-600',
-    textColor: 'text-purple-600'
-  }
+    color: "from-purple-500 to-pink-600",
+    iconBg: "bg-gradient-to-r from-purple-500 to-pink-600",
+    textColor: "text-purple-600",
+  },
 ];
 
 export function ServicesSection() {
@@ -54,7 +57,9 @@ export function ServicesSection() {
           <motion.h2
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
             initial={{ opacity: 0, y: 50 }}
-            animate={hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            animate={
+              hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+            }
             transition={{ duration: 1 }}
           >
             Our Premium Services
@@ -62,10 +67,13 @@ export function ServicesSection() {
           <motion.p
             className="text-xl text-gray-600 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
-            animate={hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            animate={
+              hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+            }
             transition={{ duration: 1, delay: 0.2 }}
           >
-            We deliver comprehensive digital solutions that transform businesses and create lasting impact in the digital landscape.
+            We deliver comprehensive digital solutions that transform businesses
+            and create lasting impact in the digital landscape.
           </motion.p>
         </div>
 
@@ -75,24 +83,39 @@ export function ServicesSection() {
               key={service.title}
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group"
               initial={{ opacity: 0, y: 50 }}
-              animate={hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              animate={
+                hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+              }
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -8 }}
             >
-              <div className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
+              <div
+                className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
+              >
                 <service.icon className="w-8 h-8 text-white stroke-2" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                {service.description}
+              </p>
               <ul className="space-y-2 mb-6">
                 {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center text-sm text-gray-600">
-                    <div className={`w-2 h-2 rounded-full mr-3 ${service.iconBg}`}></div>
+                  <li
+                    key={feature}
+                    className="flex items-center text-sm text-gray-600"
+                  >
+                    <div
+                      className={`w-2 h-2 rounded-full mr-3 ${service.iconBg}`}
+                    ></div>
                     {feature}
                   </li>
                 ))}
               </ul>
-              <button className={`${service.textColor} font-semibold hover:opacity-70 transition-all duration-200 group-hover:translate-x-2`}>
+              <button
+                className={`${service.textColor} font-semibold hover:opacity-70 transition-all duration-200 group-hover:translate-x-2`}
+              >
                 Learn More →
               </button>
             </motion.div>

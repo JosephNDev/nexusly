@@ -38,7 +38,7 @@ export function AboutSection() {
             transition={{ duration: 1 }}
           >
             <img
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+              src="https://th.bing.com/th/id/OIP.FHej_IT9G8BIdmhpFtABeAHaEK?w=300&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
               alt="Professional consulting team collaborating"
               className="rounded-2xl shadow-2xl w-full h-auto"
             />
