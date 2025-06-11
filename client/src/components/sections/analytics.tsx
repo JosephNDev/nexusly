@@ -150,7 +150,7 @@ export function AnalyticsSection() {
               <div className="relative h-80">
                 <canvas ref={chartRef} className="w-full h-full" />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="text-center" style={{ marginTop: '-20px' }}>
+                  <div className="text-center" style={{ marginTop: '-10px' }}>
                     <AnimatedCounter
                       value={totalProjects}
                       duration={3}
