@@ -31,6 +31,7 @@ export function AnalyticsSection() {
             options: {
               responsive: true,
               maintainAspectRatio: false,
+              cutout: "70%",
               plugins: {
                 legend: {
                   position: "bottom",
@@ -41,6 +42,32 @@ export function AnalyticsSection() {
                 },
               },
             },
+            plugins: [
+              {
+                id: "centerText",
+                beforeDraw: (chart) => {
+                  const { ctx, chartArea } = chart;
+                  const centerX = (chartArea.left + chartArea.right) / 2;
+                  const centerY = (chartArea.top + chartArea.bottom) / 2;
+                  
+                  ctx.save();
+                  ctx.textAlign = "center";
+                  ctx.textBaseline = "middle";
+                  
+                  // Total number
+                  ctx.font = "bold 36px Arial";
+                  ctx.fillStyle = "#1e293b";
+                  ctx.fillText("100", centerX, centerY - 10);
+                  
+                  // Label
+                  ctx.font = "16px Arial";
+                  ctx.fillStyle = "#64748b";
+                  ctx.fillText("Total Projects", centerX, centerY + 20);
+                  
+                  ctx.restore();
+                },
+              },
+            ],
           });
         }
       });
