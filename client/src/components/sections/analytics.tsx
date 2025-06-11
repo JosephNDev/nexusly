@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { BarChart, TrendingUp } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 export function AnalyticsSection() {
   const { ref, hasIntersected } = useIntersectionObserver();
   const chartRef = useRef<HTMLCanvasElement>(null);
+  const [totalProjects] = useState(100);
 
   useEffect(() => {
     if (hasIntersected && chartRef.current) {
@@ -54,12 +56,7 @@ export function AnalyticsSection() {
                   ctx.textAlign = "center";
                   ctx.textBaseline = "middle";
                   
-                  // Total number
-                  ctx.font = "bold 36px Arial";
-                  ctx.fillStyle = "#1e293b";
-                  ctx.fillText("100", centerX, centerY - 10);
-                  
-                  // Label
+                  // Label only (number will be rendered by React component)
                   ctx.font = "16px Arial";
                   ctx.fillStyle = "#64748b";
                   ctx.fillText("Total Projects", centerX, centerY + 20);
@@ -152,6 +149,15 @@ export function AnalyticsSection() {
               </h3>
               <div className="relative h-80">
                 <canvas ref={chartRef} className="w-full h-full" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="text-center" style={{ marginTop: '-20px' }}>
+                    <AnimatedCounter
+                      value={totalProjects}
+                      duration={3}
+                      className="text-4xl font-bold text-slate-900"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
