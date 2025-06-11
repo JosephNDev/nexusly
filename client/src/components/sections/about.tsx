@@ -75,6 +75,7 @@ export function AboutSection() {
                   <AnimatedCounter
                     value={stat.value}
                     suffix={stat.suffix}
+                    duration={4}
                     className="text-2xl font-bold text-white mb-2"
                   />
                   <p className="text-blue-200">{stat.label}</p>
