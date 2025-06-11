@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Monitor, Palette, Zap } from "lucide-react";
+import { Monitor, Palette, Zap, Shield, Smartphone, Cloud } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const services = [
@@ -44,6 +44,45 @@ const services = [
     color: "from-purple-500 to-pink-600",
     iconBg: "bg-gradient-to-r from-purple-500 to-pink-600",
     textColor: "text-purple-600",
+  },
+  ,
+  {
+    icon: Shield,
+    title: "Security & Compliance",
+    description:
+      "Comprehensive security solutions to protect your digital assets and ensure regulatory compliance.",
+    features: ["Security Audits", "GDPR Compliance", "Data Protection"],
+    color: "from-red-500 to-orange-600",
+    iconBg: "bg-gradient-to-r from-red-500 to-orange-600",
+    textColor: "text-red-600",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Development",
+    description:
+      "Native and cross-platform mobile applications that deliver exceptional user experiences on all devices.",
+    features: [
+      "React Native Development",
+      "iOS & Android Apps",
+      "Cross-platform Solutions",
+    ],
+    color: "from-cyan-500 to-blue-600",
+    iconBg: "bg-gradient-to-r from-cyan-500 to-blue-600",
+    textColor: "text-cyan-600",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Solutions",
+    description:
+      "Scalable cloud infrastructure and deployment solutions for modern applications and businesses.",
+    features: [
+      "AWS & Azure Integration",
+      "DevOps & CI/CD",
+      "Serverless Architecture",
+    ],
+    color: "from-amber-500 to-yellow-600",
+    iconBg: "bg-gradient-to-r from-amber-500 to-yellow-600",
+    textColor: "text-amber-600",
   },
 ];
 
