@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { FloatingElements } from "@/components/ui/floating-elements";
 import { ChevronDown } from "lucide-react";
 
 export function HeroSection() {
@@ -16,7 +15,7 @@ export function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
     >
-      <FloatingElements />
+
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div

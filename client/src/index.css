@@ -156,5 +156,5 @@
   height: 4px;
   background: linear-gradient(90deg, hsl(200, 100%, 85%), hsl(200, 80%, 70%));
   z-index: 9999;
-  transition: width 0.3s ease;
+  transition: width 0.1s ease;
 }

@@ -70,12 +70,12 @@ export function AboutSection() {
                       ? { opacity: 1, y: 0 }
                       : { opacity: 0, y: 20 }
                   }
-                  transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
                 >
                   <AnimatedCounter
                     value={stat.value}
                     suffix={stat.suffix}
-                    duration={3}
+                    duration={2}
                     className="text-2xl font-bold text-white mb-2"
                   />
                   <p className="text-gray-400">{stat.label}</p>

@@ -124,8 +124,8 @@ export function ServicesSection() {
               animate={
                 hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
               }
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              whileHover={{ y: -4 }}
             >
               <div
                 className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
