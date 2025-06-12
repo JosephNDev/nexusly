@@ -10,7 +10,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 text-white py-12">
+    <footer className="bg-black text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <motion.div
@@ -20,13 +20,13 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <div className="text-2xl font-bold mb-4">Nexulsly</div>
-            <p className="text-blue-200 mb-4">
+            <p className="text-gray-400 mb-4">
               Transforming businesses through exceptional digital experiences.
             </p>
             <div className="flex space-x-4">
               <motion.a
                 href="#"
-                className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center hover:bg-primary-700 transition-colors duration-200"
+                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -34,7 +34,7 @@ export function Footer() {
               </motion.a>
               <motion.a
                 href="#"
-                className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center hover:bg-primary-700 transition-colors duration-200"
+                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >

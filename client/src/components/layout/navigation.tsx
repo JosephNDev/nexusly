@@ -59,11 +59,7 @@ export function Navigation() {
               </button>
             ))}
             <Button 
-              className={`transition-colors duration-300 ${
-                isScrolled 
-                  ? 'bg-primary-600 text-white hover:bg-primary-700' 
-                  : 'bg-white text-primary-600 hover:bg-white/90'
-              }`}
+              className="spacex-button text-white spacex-glow"
               onClick={() => scrollToSection('contact')}
             >
               Get Started
@@ -74,7 +70,7 @@ export function Navigation() {
             variant="ghost"
             size="icon"
             className={`md:hidden transition-colors duration-300 ${
-              isScrolled ? 'text-slate-900' : 'text-white'
+              isScrolled ? 'text-white' : 'text-white'
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -85,7 +81,7 @@ export function Navigation() {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-white bg-opacity-95 backdrop-blur-lg rounded-lg m-4 p-4"
+            className="md:hidden glass-effect rounded-lg m-4 p-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -95,13 +91,13 @@ export function Navigation() {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className="text-gray-800 hover:text-primary-600 transition-colors duration-200 capitalize text-left"
+                  className="text-white hover:text-gray-300 transition-colors duration-200 capitalize text-left"
                 >
                   {item}
                 </button>
               ))}
               <Button 
-                className="bg-primary-600 text-white hover:bg-primary-700 w-full"
+                className="spacex-button text-white spacex-glow w-full"
                 onClick={() => scrollToSection('contact')}
               >
                 Get Started
