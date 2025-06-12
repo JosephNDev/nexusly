@@ -20,15 +20,15 @@ export function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h1
             className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             Transform Your{" "}
             <span className="text-gradient">
@@ -38,9 +38,9 @@ export function HeroSection() {
 
           <motion.p
             className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             We craft exceptional web experiences that drive growth, engage
             users, and deliver measurable results for forward-thinking
@@ -49,9 +49,9 @@ export function HeroSection() {
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.9 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
           >
             <Button
               size="lg"

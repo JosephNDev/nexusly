@@ -22,10 +22,10 @@ export function FloatingElement({
     <motion.div
       className={`bg-white bg-opacity-10 rounded-full ${sizeClasses[size]} ${className}`}
       animate={{
-        y: [-20, 20, -20],
+        y: [-10, 10, -10],
       }}
       transition={{
-        duration: 6,
+        duration: 8,
         repeat: Infinity,
         ease: "easeInOut",
         delay
