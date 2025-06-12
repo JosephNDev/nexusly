@@ -221,14 +221,14 @@ export function ContactSection() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-slate-900">
+                        <FormLabel className="text-sm font-semibold text-white">
                           Email
                         </FormLabel>
                         <FormControl>
                           <Input
                             type="email"
                             placeholder="john@example.com"
-                            className="rounded-xl border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200"
+                            className="rounded-xl bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-600"
                             {...field}
                           />
                         </FormControl>
@@ -242,7 +242,7 @@ export function ContactSection() {
                     name="projectType"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-slate-900">
+                        <FormLabel className="text-sm font-semibold text-white">
                           Project Type
                         </FormLabel>
                         <Select
@@ -250,7 +250,7 @@ export function ContactSection() {
                           defaultValue={field.value}
                         >
                           <FormControl>
-                            <SelectTrigger className="rounded-xl border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200">
+                            <SelectTrigger className="rounded-xl bg-gray-800 border-gray-600 text-white focus:border-gray-400 focus:ring-2 focus:ring-gray-600">
                               <SelectValue placeholder="Select a project type" />
                             </SelectTrigger>
                           </FormControl>
@@ -279,14 +279,14 @@ export function ContactSection() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-slate-900">
+                        <FormLabel className="text-sm font-semibold text-white">
                           Message
                         </FormLabel>
                         <FormControl>
                           <Textarea
                             rows={4}
                             placeholder="Tell us about your project..."
-                            className="rounded-xl border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 resize-none"
+                            className="rounded-xl bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-600 resize-none"
                             {...field}
                           />
                         </FormControl>
@@ -298,7 +298,7 @@ export function ContactSection() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-[#0f172a] hover:bg-[#1e293b] text-white text-lg px-8 py-4 rounded-xl font-semibold transition-colors duration-300"
+                    className="w-full spacex-button text-white text-lg px-8 py-4 rounded-lg font-semibold spacex-glow"
                     disabled={contactMutation.isPending}
                   >
                     {contactMutation.isPending ? "Sending..." : "Send Message"}
