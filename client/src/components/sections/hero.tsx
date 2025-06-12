@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { FloatingElements } from "@/components/ui/floating-elements";
 import { ChevronDown } from "lucide-react";
 
 export function HeroSection() {
@@ -15,46 +16,7 @@ export function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden"
     >
-      {/* Minimal geometric elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/20 rounded-full"
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute top-3/4 right-1/3 w-1 h-1 bg-primary/30 rounded-full"
-          animate={{
-            scale: [1, 2, 1],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 right-1/4 w-3 h-3 border border-primary/20 rounded-full"
-          animate={{
-            rotate: [0, 360],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      </div>
+      <FloatingElements />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
@@ -69,13 +31,13 @@ export function HeroSection() {
             transition={{ duration: 1, delay: 0.5 }}
           >
             Transform Your{" "}
-            <span className="text-gradient">
+            <span className="bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
               Digital Future
             </span>
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7 }}
@@ -93,7 +55,7 @@ export function HeroSection() {
           >
             <Button
               size="lg"
-              className="spacex-button text-primary font-semibold text-lg px-8 py-4 rounded-full spacex-glow"
+              className="bg-white text-primary-600 hover:bg-blue-50 text-lg px-8 py-4 rounded-full font-semibold shadow-2xl border-0"
               onClick={() => scrollToSection("contact")}
             >
               Start Your Project
@@ -101,7 +63,7 @@ export function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-primary/60 text-primary hover:bg-primary/10 text-lg px-8 py-4 rounded-full font-semibold bg-transparent transition-all duration-300"
+              className="border-2 border-white text-white hover:bg-white hover:!text-primary-600 text-lg px-8 py-4 rounded-full font-semibold bg-transparent transition-colors duration-300"
               onClick={() => scrollToSection("services")}
             >
               View Our Work
@@ -120,7 +82,7 @@ export function HeroSection() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="cursor-pointer flex flex-col items-center"
+          className="cursor-pointer"
           onClick={() => scrollToSection("services")}
         >
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center mb-2">
