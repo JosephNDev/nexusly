@@ -48,33 +48,33 @@ const services = [
       "SEO Implementation",
       "Speed Optimization",
     ],
-    color: "from-blue-600 to-cyan-500",
-    iconBg: "bg-gradient-to-r from-blue-600 to-cyan-500",
-    textColor: "text-blue-600",
-  },
-  {
-    icon: Database,
-    title: "Backend Solutions",
-    description:
-      "Robust, scalable backend architectures that handle high traffic and complex data operations seamlessly.",
-    features: [
-      "Database Design & Optimization",
-      "Cloud Infrastructure",
-      "Security Implementation",
-    ],
-    color: "from-purple-600 to-pink-500",
-    iconBg: "bg-gradient-to-r from-purple-600 to-pink-500",
+    color: "from-purple-500 to-pink-600",
+    iconBg: "bg-gradient-to-r from-purple-500 to-pink-600",
     textColor: "text-purple-600",
   },
   {
-    icon: ShoppingCart,
-    title: "E-commerce Development",
+    icon: Database,
+    title: "CMS Integration",
     description:
-      "Complete e-commerce solutions that drive sales and provide exceptional shopping experiences.",
+      "Easily manage your content with secure and scalable content management solutions.",
     features: [
+      "Headless CMS Setup",
+      "Custom Admin Panels",
+      "Content Strategy Consulting",
+    ],
+    color: "from-blue-800 to-cyan-600",
+    iconBg: "bg-gradient-to-r from-blue-800 to-cyan-600",
+    textColor: "text-blue-800",
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-Commerce Solutions",
+    description:
+      "Scalable, feature-rich e-commerce platforms tailored to convert visitors into loyal customers.",
+    features: [
+      "Custom Storefronts",
       "Payment Gateway Integration",
       "Inventory Management",
-      "Mobile Commerce",
     ],
     color: "from-yellow-500 to-orange-600",
     iconBg: "bg-gradient-to-r from-yellow-500 to-orange-600",
@@ -100,14 +100,8 @@ export function ServicesSection() {
   const { ref, hasIntersected } = useIntersectionObserver();
 
   return (
-    <section id="services" ref={ref} className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" ref={ref} className="py-20 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
@@ -127,8 +121,8 @@ export function ServicesSection() {
             }
             transition={{ duration: 1, delay: 0.2 }}
           >
-            We deliver cutting-edge solutions that transform your business and
-            drive sustainable growth through innovation and excellence.
+            We deliver comprehensive digital solutions that transform businesses
+            and create lasting impact in the digital landscape.
           </motion.p>
         </div>
 
@@ -136,30 +130,34 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              className="group relative bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-lg border border-white/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group"
               initial={{ opacity: 0, y: 50 }}
               animate={
                 hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
               }
               transition={{ duration: 0.8, delay: index * 0.1 }}
+              whileHover={{ y: -8 }}
             >
-              <div className="mb-6">
-                <div
-                  className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <service.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  {service.description}
-                </p>
+              <div
+                className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
+              >
+                <service.icon className="w-8 h-8 text-white stroke-2" />
               </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                {service.description}
+              </p>
               <ul className="space-y-2 mb-6">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-gray-700">
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mr-3"></div>
+                {service.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-center text-sm text-gray-600"
+                  >
+                    <div
+                      className={`w-2 h-2 rounded-full mr-3 ${service.iconBg}`}
+                    ></div>
                     {feature}
                   </li>
                 ))}
