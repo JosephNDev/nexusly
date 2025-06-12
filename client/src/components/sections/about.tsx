@@ -26,7 +26,7 @@ export function AboutSection() {
       ref={ref}
       className="py-20 bg-black text-white relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 to-primary-900 opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black to-gray-900 opacity-90"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -54,7 +54,7 @@ export function AboutSection() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Crafting Digital Excellence Since 2019
             </h2>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
               We're a team of passionate designers, developers, and strategists
               dedicated to creating exceptional digital experiences that drive
               business growth and user engagement.
@@ -78,14 +78,14 @@ export function AboutSection() {
                     duration={3}
                     className="text-2xl font-bold text-white mb-2"
                   />
-                  <p className="text-blue-200">{stat.label}</p>
+                  <p className="text-gray-400">{stat.label}</p>
                 </motion.div>
               ))}
             </div>
 
             <Button
               size="lg"
-              className="bg-white text-[#0f172a] hover:bg-blue-50 text-lg px-8 py-4 rounded-full font-semibold transition-colors duration-300"
+              className="spacex-button text-white text-lg px-8 py-4 rounded-lg font-semibold spacex-glow"
               onClick={() => scrollToSection("contact")}
             >
               Meet Our Team

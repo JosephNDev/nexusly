@@ -32,22 +32,22 @@ const contactInfo = [
     icon: Mail,
     title: "Email",
     value: "hello@nexulsly.com",
-    bgColor: "bg-primary-100",
-    iconColor: "text-primary-600",
+    bgColor: "bg-gray-800",
+    iconColor: "text-gray-300",
   },
   {
     icon: Phone,
     title: "Phone",
     value: "+1 (555) 123-4567",
-    bgColor: "bg-green-100",
-    iconColor: "text-green-600",
+    bgColor: "bg-gray-800",
+    iconColor: "text-gray-300",
   },
   {
     icon: MapPin,
     title: "Office",
     value: "Ottawa, ON",
-    bgColor: "bg-purple-100",
-    iconColor: "text-purple-600",
+    bgColor: "bg-gray-800",
+    iconColor: "text-gray-300",
   },
 ];
 
@@ -93,11 +93,11 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-20 bg-slate-50">
+    <section id="contact" ref={ref} className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
             initial={{ opacity: 0, y: 50 }}
             animate={
               hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -107,7 +107,7 @@ export function ContactSection() {
             Ready to Start Your Project?
           </motion.h2>
           <motion.p
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-400 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={
               hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
