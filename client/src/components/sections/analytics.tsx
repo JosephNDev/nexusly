@@ -59,7 +59,7 @@ export function AnalyticsSection() {
                   // Label only (number will be rendered by React component)
                   ctx.font = "16px Arial";
                   ctx.fillStyle = "#64748b";
-                  ctx.fillText("Total Projects", centerX, centerY + 50);
+                  ctx.fillText("Total Projects", centerX, centerY + 30);
 
                   ctx.restore();
                 },
@@ -150,7 +150,7 @@ export function AnalyticsSection() {
               <div className="relative h-80">
                 <canvas ref={chartRef} className="w-full h-full" />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="text-center" style={{ marginTop: "-10px" }}>
+                  <div className="text-center" style={{ marginTop: "-45px" }}>
                     <AnimatedCounter
                       value={totalProjects}
                       duration={3}
