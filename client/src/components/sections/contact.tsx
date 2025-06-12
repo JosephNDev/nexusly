@@ -127,8 +127,8 @@ export function ContactSection() {
             }
             transition={{ duration: 1 }}
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">
+            <div className="bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-700">
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Get In Touch
               </h3>
 
@@ -151,10 +151,10 @@ export function ContactSection() {
                       <info.icon className={`w-6 h-6 ${info.iconColor}`} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-slate-900 mb-1">
+                      <h4 className="font-semibold text-white mb-1">
                         {info.title}
                       </h4>
-                      <p className="text-gray-600">{info.value}</p>
+                      <p className="text-gray-400">{info.value}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -169,7 +169,7 @@ export function ContactSection() {
             }
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-700">
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
@@ -181,13 +181,13 @@ export function ContactSection() {
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-semibold text-slate-900">
+                          <FormLabel className="text-sm font-semibold text-white">
                             First Name
                           </FormLabel>
                           <FormControl>
                             <Input
                               placeholder="John"
-                              className="rounded-xl border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200"
+                              className="rounded-xl bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-600"
                               {...field}
                             />
                           </FormControl>
@@ -200,13 +200,13 @@ export function ContactSection() {
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-semibold text-slate-900">
+                          <FormLabel className="text-sm font-semibold text-white">
                             Last Name
                           </FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Doe"
-                              className="rounded-xl border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200"
+                              className="rounded-xl bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-600"
                               {...field}
                             />
                           </FormControl>
