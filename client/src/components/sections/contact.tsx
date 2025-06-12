@@ -279,7 +279,7 @@ export function ContactSection() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-slate-900">
+                        <FormLabel className="text-sm font-semibold text-white">
                           Message
                         </FormLabel>
                         <FormControl>
@@ -298,7 +298,7 @@ export function ContactSection() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-[#0f172a] hover:bg-[#1e293b] text-white text-lg px-8 py-4 rounded-xl font-semibold transition-colors duration-300"
+                    className="w-full spacex-button text-primary font-semibold text-lg px-8 py-4 rounded-xl spacex-glow"
                     disabled={contactMutation.isPending}
                   >
                     {contactMutation.isPending ? "Sending..." : "Send Message"}

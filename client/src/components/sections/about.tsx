@@ -24,9 +24,9 @@ export function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="py-20 bg-slate-900 text-white relative overflow-hidden"
+      className="py-20 bg-background text-white relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 to-primary-900 opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-background to-card opacity-90"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
