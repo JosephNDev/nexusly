@@ -8,7 +8,7 @@ const testimonials = [
     role: "CEO",
     company: "TechFlow Solutions",
     image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
     content:
       "Nexulsly transformed our entire digital presence. Their team delivered a solution that exceeded our expectations and increased our conversion rates by 340%. The attention to detail and technical expertise is unmatched.",
     rating: 5,
@@ -19,7 +19,7 @@ const testimonials = [
     role: "CTO",
     company: "MedCare Connect",
     image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face",
     content:
       "Working with Nexulsly was a game-changer for our healthcare platform. They understood our complex requirements and delivered a HIPAA-compliant solution that serves thousands of patients seamlessly.",
     rating: 5,
@@ -30,7 +30,7 @@ const testimonials = [
     role: "Founder",
     company: "FinanceHub Pro",
     image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face",
     content:
       "The financial dashboard Nexulsly built for us handles millions in transactions daily with perfect reliability. Their expertise in security and compliance gave us complete confidence in the platform.",
     rating: 5,
