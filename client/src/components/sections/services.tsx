@@ -119,8 +119,8 @@ export function ServicesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
-              key={service.title}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group"
+              key={service?.title || index}
+              className="bg-card border border-border rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group"
               initial={{ opacity: 0, y: 50 }}
               animate={
                 hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -128,35 +128,39 @@ export function ServicesSection() {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -8 }}
             >
-              <div
-                className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
-              >
-                <service.icon className="w-8 h-8 text-white stroke-2" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-2 mb-6">
-                {service.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-center text-sm text-gray-600"
+              {service && (
+                <>
+                  <div
+                    className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
                   >
-                    <div
-                      className={`w-2 h-2 rounded-full mr-3 ${service.iconBg}`}
-                    ></div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <button
-                className={`${service.textColor} font-semibold hover:opacity-70 transition-all duration-200 group-hover:translate-x-2`}
-              >
-                Learn More →
-              </button>
+                    <service.icon className="w-8 h-8 text-white stroke-2" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-center text-sm text-gray-300"
+                      >
+                        <div
+                          className={`w-2 h-2 rounded-full mr-3 ${service.iconBg}`}
+                        ></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    className={`${service.textColor} font-semibold hover:opacity-70 transition-all duration-200 group-hover:translate-x-2`}
+                  >
+                    Learn More →
+                  </button>
+                </>
+              )}
             </motion.div>
           ))}
         </div>

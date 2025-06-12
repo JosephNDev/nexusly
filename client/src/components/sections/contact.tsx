@@ -181,7 +181,7 @@ export function ContactSection() {
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-semibold text-slate-900">
+                          <FormLabel className="text-sm font-semibold text-white">
                             First Name
                           </FormLabel>
                           <FormControl>
@@ -200,7 +200,7 @@ export function ContactSection() {
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-semibold text-slate-900">
+                          <FormLabel className="text-sm font-semibold text-white">
                             Last Name
                           </FormLabel>
                           <FormControl>
@@ -221,7 +221,7 @@ export function ContactSection() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-slate-900">
+                        <FormLabel className="text-sm font-semibold text-white">
                           Email
                         </FormLabel>
                         <FormControl>
@@ -242,7 +242,7 @@ export function ContactSection() {
                     name="projectType"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-sm font-semibold text-slate-900">
+                        <FormLabel className="text-sm font-semibold text-white">
                           Project Type
                         </FormLabel>
                         <Select
