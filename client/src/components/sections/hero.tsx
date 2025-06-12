@@ -101,7 +101,7 @@ export function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:!text-primary-600 text-lg px-8 py-4 rounded-full font-semibold bg-transparent transition-colors duration-300"
+              className="border-2 border-primary/60 text-primary hover:bg-primary/10 text-lg px-8 py-4 rounded-full font-semibold bg-transparent transition-all duration-300"
               onClick={() => scrollToSection("services")}
             >
               View Our Work

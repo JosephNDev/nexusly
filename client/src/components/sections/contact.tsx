@@ -93,11 +93,11 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-20 bg-slate-50">
+    <section id="contact" ref={ref} className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
             initial={{ opacity: 0, y: 50 }}
             animate={
               hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -107,7 +107,7 @@ export function ContactSection() {
             Ready to Start Your Project?
           </motion.h2>
           <motion.p
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-300 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={
               hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
@@ -127,8 +127,8 @@ export function ContactSection() {
             }
             transition={{ duration: 1 }}
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Get In Touch
               </h3>
 
@@ -151,10 +151,10 @@ export function ContactSection() {
                       <info.icon className={`w-6 h-6 ${info.iconColor}`} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-slate-900 mb-1">
+                      <h4 className="font-semibold text-white mb-1">
                         {info.title}
                       </h4>
-                      <p className="text-gray-600">{info.value}</p>
+                      <p className="text-gray-300">{info.value}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -169,7 +169,7 @@ export function ContactSection() {
             }
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-lg">
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
