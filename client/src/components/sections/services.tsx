@@ -12,9 +12,9 @@ const services = [
       'Progressive Web Apps',
       'API Integration'
     ],
-    color: 'from-primary-500 to-purple-600',
-    iconBg: 'bg-gradient-to-r from-primary-500 to-purple-600',
-    textColor: 'text-primary-600'
+    color: 'from-slate-900 to-indigo-600',
+    iconBg: 'bg-gradient-to-r from-slate-900 to-indigo-600',
+    textColor: 'text-slate-900'
   },
   {
     icon: Palette,
