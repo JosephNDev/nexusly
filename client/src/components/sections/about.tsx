@@ -24,7 +24,7 @@ export function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="py-20 bg-slate-900 text-white relative overflow-hidden"
+      className="py-20 bg-black text-white relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 to-primary-900 opacity-90"></div>
 

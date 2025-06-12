@@ -65,9 +65,9 @@ const services = [
       "iOS & Android Apps",
       "Cross-platform Solutions",
     ],
-    color: "from-cyan-500 to-blue-600",
-    iconBg: "bg-gradient-to-r from-cyan-500 to-blue-600",
-    textColor: "text-cyan-600",
+    color: "from-gray-500 to-gray-400",
+    iconBg: "bg-gradient-to-r from-gray-600 to-gray-500",
+    textColor: "text-gray-300",
   },
   {
     icon: Cloud,
@@ -79,9 +79,9 @@ const services = [
       "DevOps & CI/CD",
       "Serverless Architecture",
     ],
-    color: "from-amber-500 to-yellow-600",
-    iconBg: "bg-gradient-to-r from-amber-500 to-yellow-600",
-    textColor: "text-amber-600",
+    color: "from-gray-500 to-gray-400",
+    iconBg: "bg-gradient-to-r from-gray-600 to-gray-500",
+    textColor: "text-gray-300",
   },
 ];
 
@@ -89,11 +89,11 @@ export function ServicesSection() {
   const { ref, hasIntersected } = useIntersectionObserver();
 
   return (
-    <section id="services" ref={ref} className="py-20 bg-slate-50">
+    <section id="services" ref={ref} className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
             initial={{ opacity: 0, y: 50 }}
             animate={
               hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -103,7 +103,7 @@ export function ServicesSection() {
             Our Premium Services
           </motion.h2>
           <motion.p
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-400 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={
               hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
@@ -119,7 +119,7 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group"
+              className="bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-700"
               initial={{ opacity: 0, y: 50 }}
               animate={
                 hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -132,17 +132,17 @@ export function ServicesSection() {
               >
                 <service.icon className="w-8 h-8 text-white stroke-2" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 {service.title}
               </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-400 mb-6 leading-relaxed">
                 {service.description}
               </p>
               <ul className="space-y-2 mb-6">
                 {service.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-center text-sm text-gray-600"
+                    className="flex items-center text-sm text-gray-400"
                   >
                     <div
                       className={`w-2 h-2 rounded-full mr-3 ${service.iconBg}`}
