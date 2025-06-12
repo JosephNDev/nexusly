@@ -92,7 +92,7 @@ export function HeroSection() {
               transition={{ duration: 2, repeat: Infinity }}
             />
           </div>
-          <p className="text-white text-sm">Scroll Down</p>
+          <p className="text-white text-sm relative -left-2">Scroll Down</p>
         </motion.div>
       </motion.div>
     </section>
