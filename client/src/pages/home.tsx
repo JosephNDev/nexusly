@@ -4,8 +4,10 @@ import { ScrollIndicator } from '@/components/ui/scroll-indicator';
 import { HeroSection } from '@/components/sections/hero';
 import { StatsSection } from '@/components/sections/stats';
 import { ServicesSection } from '@/components/sections/services';
-import { AnalyticsSection } from '@/components/sections/analytics';
+import { ProjectsSection } from '@/components/sections/analytics';
 import { AboutSection } from '@/components/sections/about';
+import { TestimonialsSection } from '@/components/sections/testimonials';
+import { FAQsSection } from '@/components/sections/faqs';
 import { ContactSection } from '@/components/sections/contact';
 
 export default function Home() {
@@ -17,8 +19,10 @@ export default function Home() {
         <HeroSection />
         <StatsSection />
         <ServicesSection />
-        <AnalyticsSection />
+        <ProjectsSection />
         <AboutSection />
+        <TestimonialsSection />
+        <FAQsSection />
         <ContactSection />
       </main>
       <Footer />
