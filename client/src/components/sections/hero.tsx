@@ -82,7 +82,7 @@ export function HeroSection() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="cursor-pointer"
+          className="cursor-pointer flex flex-col items-center"
           onClick={() => scrollToSection("services")}
         >
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center mb-2">
