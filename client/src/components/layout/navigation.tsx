@@ -61,8 +61,8 @@ export function Navigation() {
             <Button 
               className={`transition-colors duration-300 ${
                 isScrolled 
-                  ? 'bg-primary-600 text-white hover:bg-primary-700' 
-                  : 'bg-white text-primary-600 hover:bg-white/90'
+                  ? 'bg-blue-600 text-white hover:bg-blue-700' 
+                  : 'bg-white text-blue-600 hover:bg-white/90'
               }`}
               onClick={() => scrollToSection('contact')}
             >
@@ -101,7 +101,7 @@ export function Navigation() {
                 </button>
               ))}
               <Button 
-                className="bg-primary-600 text-white hover:bg-primary-700 w-full"
+                className="bg-blue-600 text-white hover:bg-blue-700 w-full"
                 onClick={() => scrollToSection('contact')}
               >
                 Get Started
