@@ -14,7 +14,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
     >
       <FloatingElements />
 
@@ -31,13 +31,13 @@ export function HeroSection() {
             transition={{ duration: 1, delay: 0.5 }}
           >
             Transform Your{" "}
-            <span className="bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
+            <span className="text-gradient">
               Digital Future
             </span>
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7 }}
@@ -55,7 +55,7 @@ export function HeroSection() {
           >
             <Button
               size="lg"
-              className="bg-white text-primary-600 hover:bg-blue-50 text-lg px-8 py-4 rounded-full font-semibold shadow-2xl border-0"
+              className="spacex-button text-white text-lg px-8 py-4 rounded-lg font-semibold spacex-glow"
               onClick={() => scrollToSection("contact")}
             >
               Start Your Project
@@ -63,7 +63,7 @@ export function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:!text-primary-600 text-lg px-8 py-4 rounded-full font-semibold bg-transparent transition-colors duration-300"
+              className="border-2 border-gray-400 text-gray-300 hover:border-white hover:text-white text-lg px-8 py-4 rounded-lg font-semibold bg-transparent spacex-glow"
               onClick={() => scrollToSection("services")}
             >
               View Our Work

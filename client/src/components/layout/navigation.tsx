@@ -27,7 +27,7 @@ export function Navigation() {
   return (
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-effect backdrop-blur-lg bg-white/90' : 'bg-transparent'
+        isScrolled ? 'glass-effect' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -37,7 +37,7 @@ export function Navigation() {
         <div className="flex justify-between items-center py-4">
           <motion.div 
             className={`text-2xl font-bold transition-colors duration-300 ${
-              isScrolled ? 'text-slate-900' : 'text-white'
+              isScrolled ? 'text-white' : 'text-white'
             }`}
             whileHover={{ scale: 1.05 }}
           >
@@ -51,8 +51,8 @@ export function Navigation() {
                 onClick={() => scrollToSection(item)}
                 className={`transition-colors duration-300 capitalize ${
                   isScrolled 
-                    ? 'text-slate-700 hover:text-primary-600' 
-                    : 'text-white hover:text-blue-300'
+                    ? 'text-gray-300 hover:text-white' 
+                    : 'text-white hover:text-gray-300'
                 }`}
               >
                 {item}
