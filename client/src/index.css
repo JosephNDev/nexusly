@@ -80,9 +80,10 @@
   }
 
   .glass-effect {
-    backdrop-filter: blur(10px);
-    background: rgba(15, 15, 15, 0.9);
+    backdrop-filter: blur(20px);
+    background: rgba(15, 15, 15, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   }
 
   .text-gradient {
@@ -104,15 +105,16 @@
   
   .spacex-button:hover {
     background: linear-gradient(135deg, hsl(0, 0%, 18%) 0%, hsl(0, 0%, 22%) 100%);
-    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(115, 243, 255, 0.3);
+    transform: translateY(-2px);
   }
   
   .spacex-glow {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 20px rgba(115, 243, 255, 0.2);
   }
   
   .spacex-glow:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 30px rgba(115, 243, 255, 0.4);
   }
 }
 
@@ -156,5 +158,5 @@
   height: 4px;
   background: linear-gradient(90deg, hsl(200, 100%, 85%), hsl(200, 80%, 70%));
   z-index: 9999;
-  transition: width 0.1s ease;
+  transition: width 0.3s ease;
 }

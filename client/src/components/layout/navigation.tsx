@@ -27,7 +27,7 @@ export function Navigation() {
   return (
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-effect' : 'bg-transparent'
+        isScrolled ? 'glass-effect backdrop-blur-lg bg-white/90' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -37,7 +37,7 @@ export function Navigation() {
         <div className="flex justify-between items-center py-4">
           <motion.div 
             className={`text-2xl font-bold transition-colors duration-300 ${
-              isScrolled ? 'text-white' : 'text-white'
+              isScrolled ? 'text-slate-900' : 'text-white'
             }`}
             whileHover={{ scale: 1.05 }}
           >
@@ -51,15 +51,19 @@ export function Navigation() {
                 onClick={() => scrollToSection(item)}
                 className={`transition-colors duration-300 capitalize ${
                   isScrolled 
-                    ? 'text-gray-300 hover:text-white' 
-                    : 'text-white hover:text-gray-300'
+                    ? 'text-slate-700 hover:text-primary-600' 
+                    : 'text-white hover:text-blue-300'
                 }`}
               >
                 {item}
               </button>
             ))}
             <Button 
-              className="spacex-button text-white spacex-glow"
+              className={`transition-colors duration-300 ${
+                isScrolled 
+                  ? 'bg-primary-600 text-white hover:bg-primary-700' 
+                  : 'bg-white text-primary-600 hover:bg-white/90'
+              }`}
               onClick={() => scrollToSection('contact')}
             >
               Get Started
@@ -70,7 +74,7 @@ export function Navigation() {
             variant="ghost"
             size="icon"
             className={`md:hidden transition-colors duration-300 ${
-              isScrolled ? 'text-white' : 'text-white'
+              isScrolled ? 'text-slate-900' : 'text-white'
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -81,7 +85,7 @@ export function Navigation() {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden glass-effect rounded-lg m-4 p-4"
+            className="md:hidden bg-white bg-opacity-95 backdrop-blur-lg rounded-lg m-4 p-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -91,13 +95,13 @@ export function Navigation() {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className="text-white hover:text-gray-300 transition-colors duration-200 capitalize text-left"
+                  className="text-gray-800 hover:text-primary-600 transition-colors duration-200 capitalize text-left"
                 >
                   {item}
                 </button>
               ))}
               <Button 
-                className="spacex-button text-white spacex-glow w-full"
+                className="bg-primary-600 text-white hover:bg-primary-700 w-full"
                 onClick={() => scrollToSection('contact')}
               >
                 Get Started

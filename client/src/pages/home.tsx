@@ -10,7 +10,7 @@ import { ContactSection } from '@/components/sections/contact';
 
 export default function Home() {
   return (
-    <div className="font-inter bg-black overflow-x-hidden">
+    <div className="font-inter bg-slate-50 overflow-x-hidden">
       <ScrollIndicator />
       <Navigation />
       <main>

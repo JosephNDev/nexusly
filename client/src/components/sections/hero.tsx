@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { FloatingElements } from "@/components/ui/floating-elements";
 import { ChevronDown } from "lucide-react";
 
 export function HeroSection() {
@@ -13,33 +14,33 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden"
     >
-
+      <FloatingElements />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
         >
           <motion.h1
             className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 1, delay: 0.5 }}
           >
             Transform Your{" "}
-            <span className="text-gradient">
+            <span className="bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
               Digital Future
             </span>
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 1, delay: 0.7 }}
           >
             We craft exceptional web experiences that drive growth, engage
             users, and deliver measurable results for forward-thinking
@@ -48,13 +49,13 @@ export function HeroSection() {
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 1, delay: 0.9 }}
           >
             <Button
               size="lg"
-              className="spacex-button text-white text-lg px-8 py-4 rounded-lg font-semibold spacex-glow"
+              className="bg-white text-primary-600 hover:bg-blue-50 text-lg px-8 py-4 rounded-full font-semibold shadow-2xl border-0"
               onClick={() => scrollToSection("contact")}
             >
               Start Your Project
@@ -62,7 +63,7 @@ export function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-gray-400 text-gray-300 hover:border-white hover:text-white text-lg px-8 py-4 rounded-lg font-semibold bg-transparent spacex-glow"
+              className="border-2 border-white text-white hover:bg-white hover:!text-primary-600 text-lg px-8 py-4 rounded-full font-semibold bg-transparent transition-colors duration-300"
               onClick={() => scrollToSection("services")}
             >
               View Our Work

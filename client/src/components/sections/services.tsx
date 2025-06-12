@@ -13,9 +13,9 @@ const services = [
       "Progressive Web Apps",
       "API Integration",
     ],
-    color: "from-gray-500 to-gray-400",
-    iconBg: "bg-gradient-to-r from-gray-600 to-gray-500",
-    textColor: "text-gray-300",
+    color: "from-primary-500 to-purple-600",
+    iconBg: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    textColor: "text-primary-600",
   },
   {
     icon: Palette,
@@ -27,9 +27,9 @@ const services = [
       "Prototyping & Wireframing",
       "Design Systems",
     ],
-    color: "from-gray-500 to-gray-400",
-    iconBg: "bg-gradient-to-r from-gray-600 to-gray-500",
-    textColor: "text-gray-300",
+    color: "from-green-500 to-teal-600",
+    iconBg: "bg-gradient-to-r from-green-500 to-teal-600",
+    textColor: "text-green-600",
   },
   {
     icon: Zap,
@@ -41,19 +41,20 @@ const services = [
       "SEO Implementation",
       "Speed Optimization",
     ],
-    color: "from-gray-500 to-gray-400",
-    iconBg: "bg-gradient-to-r from-gray-600 to-gray-500",
-    textColor: "text-gray-300",
+    color: "from-purple-500 to-pink-600",
+    iconBg: "bg-gradient-to-r from-purple-500 to-pink-600",
+    textColor: "text-purple-600",
   },
+  ,
   {
     icon: Shield,
     title: "Security & Compliance",
     description:
       "Comprehensive security solutions to protect your digital assets and ensure regulatory compliance.",
     features: ["Security Audits", "GDPR Compliance", "Data Protection"],
-    color: "from-gray-500 to-gray-400",
-    iconBg: "bg-gradient-to-r from-gray-600 to-gray-500",
-    textColor: "text-gray-300",
+    color: "from-red-500 to-orange-600",
+    iconBg: "bg-gradient-to-r from-red-500 to-orange-600",
+    textColor: "text-red-600",
   },
   {
     icon: Smartphone,
@@ -65,9 +66,9 @@ const services = [
       "iOS & Android Apps",
       "Cross-platform Solutions",
     ],
-    color: "from-gray-500 to-gray-400",
-    iconBg: "bg-gradient-to-r from-gray-600 to-gray-500",
-    textColor: "text-gray-300",
+    color: "from-cyan-500 to-blue-600",
+    iconBg: "bg-gradient-to-r from-cyan-500 to-blue-600",
+    textColor: "text-cyan-600",
   },
   {
     icon: Cloud,
@@ -79,9 +80,9 @@ const services = [
       "DevOps & CI/CD",
       "Serverless Architecture",
     ],
-    color: "from-gray-500 to-gray-400",
-    iconBg: "bg-gradient-to-r from-gray-600 to-gray-500",
-    textColor: "text-gray-300",
+    color: "from-amber-500 to-yellow-600",
+    iconBg: "bg-gradient-to-r from-amber-500 to-yellow-600",
+    textColor: "text-amber-600",
   },
 ];
 
@@ -89,11 +90,11 @@ export function ServicesSection() {
   const { ref, hasIntersected } = useIntersectionObserver();
 
   return (
-    <section id="services" ref={ref} className="py-20 bg-black">
+    <section id="services" ref={ref} className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
             initial={{ opacity: 0, y: 50 }}
             animate={
               hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -103,7 +104,7 @@ export function ServicesSection() {
             Our Premium Services
           </motion.h2>
           <motion.p
-            className="text-xl text-gray-400 max-w-3xl mx-auto"
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={
               hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
@@ -119,30 +120,30 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              className="bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-700"
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group"
               initial={{ opacity: 0, y: 50 }}
               animate={
                 hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
               }
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              whileHover={{ y: -4 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              whileHover={{ y: -8 }}
             >
               <div
                 className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
               >
                 <service.icon className="w-8 h-8 text-white stroke-2" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
                 {service.title}
               </h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">
+              <p className="text-gray-600 mb-6 leading-relaxed">
                 {service.description}
               </p>
               <ul className="space-y-2 mb-6">
                 {service.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-center text-sm text-gray-400"
+                    className="flex items-center text-sm text-gray-600"
                   >
                     <div
                       className={`w-2 h-2 rounded-full mr-3 ${service.iconBg}`}

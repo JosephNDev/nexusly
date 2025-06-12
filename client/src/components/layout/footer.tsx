@@ -10,7 +10,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white py-12">
+    <footer className="bg-slate-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <motion.div
@@ -20,13 +20,13 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <div className="text-2xl font-bold mb-4">Nexulsly</div>
-            <p className="text-gray-400 mb-4">
+            <p className="text-blue-200 mb-4">
               Transforming businesses through exceptional digital experiences.
             </p>
             <div className="flex space-x-4">
               <motion.a
                 href="#"
-                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors duration-200"
+                className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center hover:bg-primary-700 transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -34,7 +34,7 @@ export function Footer() {
               </motion.a>
               <motion.a
                 href="#"
-                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors duration-200"
+                className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center hover:bg-primary-700 transition-colors duration-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -50,7 +50,7 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <h3 className="font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-blue-200">
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
@@ -93,7 +93,7 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-blue-200">
               <li>
                 <button 
                   onClick={() => scrollToSection('about')}
@@ -130,7 +130,7 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <h3 className="font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-blue-200">
               <li>hello@nexulsly.com</li>
               <li>+1 (555) 123-4567</li>
               <li>Ottawa, ON</li>
@@ -139,7 +139,7 @@ export function Footer() {
         </div>
         
         <motion.div
-          className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
+          className="border-t border-gray-700 mt-8 pt-8 text-center text-blue-200"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
