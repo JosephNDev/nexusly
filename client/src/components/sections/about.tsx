@@ -5,59 +5,69 @@ import { Linkedin, Twitter, Github, Mail } from "lucide-react";
 
 const teamMembers = [
   {
-    name: 'Sarah Chen',
-    role: 'Lead Designer',
-    specialty: 'UI/UX & Brand Strategy',
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
-    bio: 'Creative visionary with 8+ years crafting user-centered designs for Fortune 500 companies.',
+    name: "Sarah Chen",
+    role: "Lead Designer",
+    specialty: "UI/UX & Brand Strategy",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    bio: "Creative visionary with 8+ years crafting user-centered designs for Fortune 500 companies.",
     social: {
-      linkedin: '#',
-      twitter: '#',
-      email: 'sarah@nexulsly.com'
-    }
+      linkedin: "#",
+      twitter: "#",
+      email: "sarah@nexulsly.com",
+    },
   },
   {
-    name: 'Marcus Rodriguez',
-    role: 'Technical Director',
-    specialty: 'Full-Stack Development',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
-    bio: 'Engineering excellence advocate who transforms complex problems into elegant solutions.',
+    name: "Marcus Rodriguez",
+    role: "Technical Director",
+    specialty: "Full-Stack Development",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    bio: "Engineering excellence advocate who transforms complex problems into elegant solutions.",
     social: {
-      linkedin: '#',
-      github: '#',
-      email: 'marcus@nexulsly.com'
-    }
+      linkedin: "#",
+      github: "#",
+      email: "marcus@nexulsly.com",
+    },
   },
   {
-    name: 'Elena Kowalski',
-    role: 'Strategy Lead',
-    specialty: 'Digital Transformation',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
-    bio: 'Strategic mastermind who bridges business objectives with innovative technology solutions.',
+    name: "Elena Kowalski",
+    role: "Strategy Lead",
+    specialty: "Digital Transformation",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    bio: "Strategic mastermind who bridges business objectives with innovative technology solutions.",
     social: {
-      linkedin: '#',
-      twitter: '#',
-      email: 'elena@nexulsly.com'
-    }
-  }
+      linkedin: "#",
+      twitter: "#",
+      email: "elena@nexulsly.com",
+    },
+  },
 ];
 
 export function AboutSection() {
   const { ref, hasIntersected } = useIntersectionObserver();
-  
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="about" ref={ref} className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+    <section
+      id="about"
+      ref={ref}
+      className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden"
+    >
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+        <div
+          className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
+          style={{ animationDelay: "2s" }}
+        ></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +75,9 @@ export function AboutSection() {
         <motion.div
           className="text-center mb-20"
           initial={{ opacity: 0, y: 50 }}
-          animate={hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          animate={
+            hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+          }
           transition={{ duration: 1 }}
         >
           <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
@@ -75,7 +87,9 @@ export function AboutSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Our diverse team of experts brings together decades of experience in design, development, and digital strategy to deliver transformative solutions.
+            Our diverse team of experts brings together decades of experience in
+            design, development, and digital strategy to deliver transformative
+            solutions.
           </p>
         </motion.div>
 
@@ -86,8 +100,17 @@ export function AboutSection() {
               key={member.name}
               className="group relative bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-lg border border-white/50 hover:shadow-2xl transition-all duration-500"
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={hasIntersected ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-              transition={{ duration: 0.8, delay: index * 0.2, type: "spring", stiffness: 100 }}
+              animate={
+                hasIntersected
+                  ? { opacity: 1, y: 0, scale: 1 }
+                  : { opacity: 0, y: 50, scale: 0.9 }
+              }
+              transition={{
+                duration: 0.8,
+                delay: index * 0.2,
+                type: "spring",
+                stiffness: 100,
+              }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
               {/* Profile Image */}
@@ -97,8 +120,8 @@ export function AboutSection() {
                 transition={{ duration: 0.3 }}
               >
                 <div className="w-32 h-32 mx-auto rounded-full overflow-hidden ring-4 ring-white/50 shadow-xl">
-                  <img 
-                    src={member.image} 
+                  <img
+                    src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
                   />
@@ -109,10 +132,18 @@ export function AboutSection() {
 
               {/* Member Info */}
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">{member.name}</h3>
-                <div className="text-lg font-semibold text-blue-600 mb-1">{member.role}</div>
-                <div className="text-sm text-gray-600 mb-4">{member.specialty}</div>
-                <p className="text-gray-700 leading-relaxed text-sm">{member.bio}</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  {member.name}
+                </h3>
+                <div className="text-lg font-semibold text-blue-600 mb-1">
+                  {member.role}
+                </div>
+                <div className="text-sm text-gray-600 mb-4">
+                  {member.specialty}
+                </div>
+                <p className="text-gray-700 leading-relaxed text-sm">
+                  {member.bio}
+                </p>
               </div>
 
               {/* Social Links */}
@@ -167,18 +198,23 @@ export function AboutSection() {
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 30 }}
-          animate={hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={
+            hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+          }
           transition={{ duration: 1, delay: 0.8 }}
         >
           <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-8 border border-white/50 shadow-lg max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Ready to Work Together?</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              Ready to Work Together?
+            </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Let's discuss how our team can help transform your digital presence and achieve your business goals.
+              Let's discuss how our team can help transform your digital
+              presence and achieve your business goals.
             </p>
             <Button
               size="lg"
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-lg px-8 py-4 rounded-full font-semibold shadow-lg"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection("contact")}
             >
               Start Your Project
             </Button>
