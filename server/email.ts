@@ -1,5 +1,5 @@
-import nodemailer from 'nodemailer';
-import { log } from './vite';
+import nodemailer from "nodemailer";
+import { log } from "./vite";
 
 interface EmailData {
   name: string;
@@ -28,39 +28,46 @@ class EmailService {
 
     // Configure SMTP transporter
     const emailConfig: EmailConfig = {
-      host: process.env.SMTP_HOST || 'smtp.office365.com',
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+      host: process.env.SMTP_HOST || "smtp.office365.com",
+      port: parseInt(process.env.SMTP_PORT || "587"),
+      secure: process.env.SMTP_SECURE === "true", // true for 465, false for other ports
       auth: {
         user: process.env.SMTP_USER!,
-        pass: process.env.SMTP_PASSWORD!
-      }
+        pass: process.env.SMTP_PASSWORD!,
+      },
     };
 
     this.transporter = nodemailer.createTransport(emailConfig);
-    this.fromEmail = process.env.FROM_EMAIL || 'joseph@nexusly.com';
-    this.teamEmails = (process.env.TEAM_EMAILS || 'nikuzabo.j@gmail.com,fabrice.ndizihiwe@gmail.com').split(',').map(email => email.trim());
+    this.fromEmail = process.env.FROM_EMAIL || "hello@nexusly.com";
+    this.teamEmails = (
+      process.env.TEAM_EMAILS ||
+      "nikuzabo.j@gmail.com,fabrice.ndizihiwe@gmail.com"
+    )
+      .split(",")
+      .map((email) => email.trim());
 
     // Verify connection on initialization
     this.verifyConnection();
   }
 
   private validateEnvironmentVariables(): void {
-    const requiredVars = ['SMTP_USER', 'SMTP_PASSWORD'];
-    const missingVars = requiredVars.filter(varName => !process.env[varName]);
-    
+    const requiredVars = ["SMTP_USER", "SMTP_PASSWORD"];
+    const missingVars = requiredVars.filter((varName) => !process.env[varName]);
+
     if (missingVars.length > 0) {
-      throw new Error(`Missing required environment variables: ${missingVars.join(', ')}`);
+      throw new Error(
+        `Missing required environment variables: ${missingVars.join(", ")}`,
+      );
     }
   }
 
   private async verifyConnection(): Promise<void> {
     try {
       await this.transporter.verify();
-      log('SMTP connection verified successfully', 'email');
+      log("SMTP connection verified successfully", "email");
     } catch (error) {
-      log(`SMTP connection failed: ${error}`, 'email');
-      throw new Error('Failed to connect to SMTP server');
+      log(`SMTP connection failed: ${error}`, "email");
+      throw new Error("Failed to connect to SMTP server");
     }
   }
 
@@ -172,15 +179,18 @@ class EmailService {
               </div>
               
               <div class="metadata">
-                <strong>📅 Received:</strong> ${new Date().toLocaleString('en-US', { 
-                  timeZone: 'America/Toronto',
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  timeZoneName: 'short'
-                })}<br>
+                <strong>📅 Received:</strong> ${new Date().toLocaleString(
+                  "en-US",
+                  {
+                    timeZone: "America/Toronto",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    timeZoneName: "short",
+                  },
+                )}<br>
                 <strong>🌐 Source:</strong> Contact Form (nexulsly.com)
               </div>
               
@@ -199,16 +209,19 @@ class EmailService {
       const mailOptions = {
         from: `"Nexulsly Team" <${this.fromEmail}>`,
         to: data.email,
-        subject: 'Thank you for contacting Nexulsly - We\'ll be in touch soon!',
+        subject: "Thank you for contacting Nexulsly - We'll be in touch soon!",
         html: this.generateConfirmationEmailHtml(data.name),
-        text: `Hi ${data.name},\n\nThank you for reaching out to Nexulsly! We've received your message and our team will review it within 24 hours.\n\nWe'll get back to you within 1-2 business days to discuss how we can help transform your digital presence.\n\nBest regards,\nThe Nexulsly Team\n\nNexulsly Digital Solutions\nOttawa, ON, Canada\nEmail: joseph@nexulsly.com`
+        text: `Hi ${data.name},\n\nThank you for reaching out to Nexulsly! We've received your message and our team will review it within 24 hours.\n\nWe'll get back to you within 1-2 business days to discuss how we can help transform your digital presence.\n\nBest regards,\nThe Nexulsly Team\n\nNexulsly Digital Solutions\nOttawa, ON, Canada\nEmail: joseph@nexulsly.com`,
       };
 
       await this.transporter.sendMail(mailOptions);
-      log(`Confirmation email sent successfully to ${data.email}`, 'email');
+      log(`Confirmation email sent successfully to ${data.email}`, "email");
     } catch (error) {
-      log(`Failed to send confirmation email to ${data.email}: ${error}`, 'email');
-      throw new Error('Failed to send confirmation email');
+      log(
+        `Failed to send confirmation email to ${data.email}: ${error}`,
+        "email",
+      );
+      throw new Error("Failed to send confirmation email");
     }
   }
 
@@ -220,49 +233,62 @@ class EmailService {
         subject: `🚨 New Contact: ${data.name} - ${data.email}`,
         html: this.generateInternalNotificationHtml(data),
         text: `New contact form submission:\n\nName: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}\n\nReceived: ${new Date().toLocaleString()}\nSource: Contact Form (nexulsly.com)\n\nPlease respond within 24 hours.`,
-        replyTo: data.email
+        replyTo: data.email,
       };
 
       await this.transporter.sendMail(mailOptions);
-      log(`Internal notification sent successfully to team: ${this.teamEmails.join(', ')}`, 'email');
+      log(
+        `Internal notification sent successfully to team: ${this.teamEmails.join(", ")}`,
+        "email",
+      );
     } catch (error) {
-      log(`Failed to send internal notification: ${error}`, 'email');
-      throw new Error('Failed to send internal notification');
+      log(`Failed to send internal notification: ${error}`, "email");
+      throw new Error("Failed to send internal notification");
     }
   }
 
-  async processContactForm(data: EmailData): Promise<{ success: boolean; message: string }> {
+  async processContactForm(
+    data: EmailData,
+  ): Promise<{ success: boolean; message: string }> {
     try {
       // Validate input data
       if (!data.name || !data.email || !data.message) {
-        throw new Error('Missing required fields: name, email, and message are required');
+        throw new Error(
+          "Missing required fields: name, email, and message are required",
+        );
       }
 
       // Basic email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(data.email)) {
-        throw new Error('Invalid email format');
+        throw new Error("Invalid email format");
       }
 
       // Send both emails concurrently for better performance
       await Promise.all([
         this.sendConfirmationEmail(data),
-        this.sendInternalNotification(data)
+        this.sendInternalNotification(data),
       ]);
 
-      log(`Contact form processed successfully for ${data.name} (${data.email})`, 'email');
-      
+      log(
+        `Contact form processed successfully for ${data.name} (${data.email})`,
+        "email",
+      );
+
       return {
         success: true,
-        message: 'Your message has been sent successfully! We\'ll get back to you within 1-2 business days.'
+        message:
+          "Your message has been sent successfully! We'll get back to you within 1-2 business days.",
       };
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-      log(`Contact form processing failed: ${errorMessage}`, 'email');
-      
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error occurred";
+      log(`Contact form processing failed: ${errorMessage}`, "email");
+
       return {
         success: false,
-        message: 'Failed to send your message. Please try again or contact us directly.'
+        message:
+          "Failed to send your message. Please try again or contact us directly.",
       };
     }
   }
