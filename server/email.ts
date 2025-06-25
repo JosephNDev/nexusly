@@ -117,7 +117,7 @@ class EmailService {
             <div class="footer">
               <p><strong>Nexulsly Digital Solutions</strong><br>
               Ottawa, ON, Canada<br>
-              Email: joseph@nexulsly.com</p>
+              Email: hello@nexulsly.com</p>
               
               <div class="social">
                 <a href="#">LinkedIn</a> | 
@@ -211,7 +211,7 @@ class EmailService {
         to: data.email,
         subject: "Thank you for contacting Nexulsly - We'll be in touch soon!",
         html: this.generateConfirmationEmailHtml(data.name),
-        text: `Hi ${data.name},\n\nThank you for reaching out to Nexulsly! We've received your message and our team will review it within 24 hours.\n\nWe'll get back to you within 1-2 business days to discuss how we can help transform your digital presence.\n\nBest regards,\nThe Nexulsly Team\n\nNexulsly Digital Solutions\nOttawa, ON, Canada\nEmail: joseph@nexulsly.com`,
+        text: `Hi ${data.name},\n\nThank you for reaching out to Nexulsly! We've received your message and our team will review it within 24 hours.\n\nWe'll get back to you within 1-2 business days to discuss how we can help transform your digital presence.\n\nBest regards,\nThe Nexulsly Team\n\nNexulsly Digital Solutions\nOttawa, ON, Canada\nEmail: hello@nexulsly.com`,
       };
 
       await this.transporter.sendMail(mailOptions);
