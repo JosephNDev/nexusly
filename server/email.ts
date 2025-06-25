@@ -38,7 +38,7 @@ class EmailService {
     };
 
     this.transporter = nodemailer.createTransport(emailConfig);
-    this.fromEmail = process.env.FROM_EMAIL || "hello@nexusly.ca";
+    this.fromEmail = process.env.FROM_EMAIL || 'joseph@nexulsly.com';
     this.teamEmails = (
       process.env.TEAM_EMAILS ||
       "nikuzabo.j@gmail.com,fabrice.ndizihiwe@gmail.com"
