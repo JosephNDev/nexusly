@@ -71,7 +71,7 @@ class EmailService {
     }
   }
 
-  private generateConfirmationEmailHtml(name: string): string {
+  private generateConfirmationEmailHtml(name: string, serviceType: string): string {
     return `
       <!DOCTYPE html>
       <html>
@@ -86,6 +86,7 @@ class EmailService {
             .header h1 { margin: 0; font-size: 28px; font-weight: bold; }
             .content { padding: 40px 30px; }
             .message { background: #f1f5f9; padding: 20px; border-radius: 8px; border-left: 4px solid #3b82f6; margin: 20px 0; }
+            .service-info { background: #ecfdf5; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; margin: 20px 0; }
             .footer { background: #f8fafc; padding: 30px; text-align: center; border-top: 1px solid #e2e8f0; }
             .button { display: inline-block; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 20px 0; }
             .social { margin: 20px 0; }
@@ -96,14 +97,19 @@ class EmailService {
           <div class="container">
             <div class="header">
               <h1>Thank You, ${name}!</h1>
-              <p>We've received your message and will get back to you soon.</p>
+              <p>We've received your ${serviceType} inquiry and will get back to you soon.</p>
             </div>
             <div class="content">
+              <div class="service-info">
+                <strong>🎯 Service Requested:</strong> ${serviceType}<br>
+                <p style="margin: 10px 0 0 0; font-size: 14px; color: #059669;">Our ${serviceType.toLowerCase()} specialists will review your requirements and provide tailored recommendations.</p>
+              </div>
+              
               <h2>What happens next?</h2>
               <ul>
-                <li><strong>Review:</strong> Our team will review your message within 24 hours</li>
-                <li><strong>Response:</strong> We'll get back to you within 1-2 business days</li>
-                <li><strong>Follow-up:</strong> If needed, we'll schedule a call to discuss your project</li>
+                <li><strong>Review:</strong> Our team will review your ${serviceType.toLowerCase()} requirements within 24 hours</li>
+                <li><strong>Response:</strong> We'll get back to you within 1-2 business days with initial insights</li>
+                <li><strong>Follow-up:</strong> If needed, we'll schedule a call to discuss your ${serviceType.toLowerCase()} project in detail</li>
               </ul>
               
               <div class="message">
@@ -204,14 +210,14 @@ class EmailService {
     `;
   }
 
-  async sendConfirmationEmail(data: EmailData): Promise<void> {
+  async sendConfirmationEmail(data: EmailData & { serviceType: string }): Promise<void> {
     try {
       const mailOptions = {
         from: `"Nexulsly Team" <${this.fromEmail}>`,
         to: data.email,
-        subject: "Thank you for contacting Nexulsly - We'll be in touch soon!",
-        html: this.generateConfirmationEmailHtml(data.name),
-        text: `Hi ${data.name},\n\nThank you for reaching out to Nexulsly! We've received your message and our team will review it within 24 hours.\n\nWe'll get back to you within 1-2 business days to discuss how we can help transform your digital presence.\n\nBest regards,\nThe Nexulsly Team\n\nNexulsly Digital Solutions\nOttawa, ON, Canada\nEmail: hello@nexulsly.com`,
+        subject: `Thank you for your ${data.serviceType} inquiry - We'll be in touch soon!`,
+        html: this.generateConfirmationEmailHtml(data.name, data.serviceType),
+        text: `Hi ${data.name},\n\nThank you for reaching out to Nexulsly about ${data.serviceType}! We've received your message and our team will review your requirements within 24 hours.\n\nWe'll get back to you within 1-2 business days to discuss how we can help with your ${data.serviceType.toLowerCase()} project.\n\nBest regards,\nThe Nexulsly Team\n\nNexulsly Digital Solutions\nOttawa, ON, Canada\nEmail: hello@nexulsly.com`,
       };
 
       await this.transporter.sendMail(mailOptions);
@@ -248,13 +254,13 @@ class EmailService {
   }
 
   async processContactForm(
-    data: EmailData,
+    data: EmailData & { serviceType: string },
   ): Promise<{ success: boolean; message: string }> {
     try {
       // Validate input data
-      if (!data.name || !data.email || !data.message) {
+      if (!data.name || !data.email || !data.message || !data.serviceType) {
         throw new Error(
-          "Missing required fields: name, email, and message are required",
+          "Missing required fields: name, email, message, and serviceType are required",
         );
       }
 

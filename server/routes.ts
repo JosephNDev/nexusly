@@ -18,7 +18,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const emailResult = await emailService.processContactForm({
         name: `${contactData.firstName} ${contactData.lastName}`,
         email: contactData.email,
-        message: contactData.message
+        message: contactData.message,
+        serviceType: contactData.projectType
       });
       
       if (emailResult.success) {
