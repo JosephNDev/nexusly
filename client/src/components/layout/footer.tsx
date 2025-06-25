@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion';
-import { Twitter, Linkedin } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Twitter, Linkedin } from "lucide-react";
 
 export function Footer() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -42,7 +42,7 @@ export function Footer() {
               </motion.a>
             </div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -52,32 +52,32 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-blue-200">
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
+                <button
+                  onClick={() => scrollToSection("services")}
                   className="hover:text-white transition-colors duration-200"
                 >
                   Web Development
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
+                <button
+                  onClick={() => scrollToSection("services")}
                   className="hover:text-white transition-colors duration-200"
                 >
                   UI/UX Design
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
+                <button
+                  onClick={() => scrollToSection("services")}
                   className="hover:text-white transition-colors duration-200"
                 >
                   Performance Optimization
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
+                <button
+                  onClick={() => scrollToSection("services")}
                   className="hover:text-white transition-colors duration-200"
                 >
                   Consulting
@@ -85,7 +85,7 @@ export function Footer() {
               </li>
             </ul>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,34 +95,40 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2 text-blue-200">
               <li>
-                <button 
-                  onClick={() => scrollToSection('about')}
+                <button
+                  onClick={() => scrollToSection("about")}
                   className="hover:text-white transition-colors duration-200"
                 >
                   About Us
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('about')}
+                <button
+                  onClick={() => scrollToSection("about")}
                   className="hover:text-white transition-colors duration-200"
                 >
                   Our Team
                 </button>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors duration-200">
+                <a
+                  href="#"
+                  className="hover:text-white transition-colors duration-200"
+                >
                   Careers
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors duration-200">
+                <a
+                  href="#"
+                  className="hover:text-white transition-colors duration-200"
+                >
                   Blog
                 </a>
               </li>
             </ul>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -131,13 +137,13 @@ export function Footer() {
           >
             <h3 className="font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-blue-200">
-              <li>hello@nexulsly.com</li>
+              <li>hello@nexulsly.ca</li>
               <li>+1 (555) 123-4567</li>
               <li>Ottawa, ON</li>
             </ul>
           </motion.div>
         </div>
-        
+
         <motion.div
           className="border-t border-gray-700 mt-8 pt-8 text-center text-blue-200"
           initial={{ opacity: 0 }}

@@ -38,7 +38,7 @@ class EmailService {
     };
 
     this.transporter = nodemailer.createTransport(emailConfig);
-    this.fromEmail = process.env.FROM_EMAIL || "hello@nexusly.com";
+    this.fromEmail = process.env.FROM_EMAIL || "hello@nexusly.ca";
     this.teamEmails = (
       process.env.TEAM_EMAILS ||
       "nikuzabo.j@gmail.com,fabrice.ndizihiwe@gmail.com"
@@ -71,7 +71,10 @@ class EmailService {
     }
   }
 
-  private generateConfirmationEmailHtml(name: string, serviceType: string): string {
+  private generateConfirmationEmailHtml(
+    name: string,
+    serviceType: string,
+  ): string {
     return `
       <!DOCTYPE html>
       <html>
@@ -118,12 +121,12 @@ class EmailService {
               
               <p>If you have any urgent questions, feel free to reply to this email or call us directly.</p>
               
-              <a href="https://nexulsly.com" class="button">Visit Our Website</a>
+              <a href="https://nexulsly.ca" class="button">Visit Our Website</a>
             </div>
             <div class="footer">
               <p><strong>Nexulsly Digital Solutions</strong><br>
               Ottawa, ON, Canada<br>
-              Email: hello@nexulsly.com</p>
+              Email: hello@nexulsly.ca</p>
               
               <div class="social">
                 <a href="#">LinkedIn</a> | 
@@ -142,7 +145,9 @@ class EmailService {
     `;
   }
 
-  private generateInternalNotificationHtml(data: EmailData & { serviceType: string }): string {
+  private generateInternalNotificationHtml(
+    data: EmailData & { serviceType: string },
+  ): string {
     return `
       <!DOCTYPE html>
       <html>
@@ -202,7 +207,7 @@ class EmailService {
                     timeZoneName: "short",
                   },
                 )}<br>
-                <strong>🌐 Source:</strong> Contact Form (nexulsly.com)
+                <strong>🌐 Source:</strong> Contact Form (nexulsly.ca)
               </div>
               
               <p style="margin-top: 30px; padding: 20px; background: #dcfce7; border-radius: 8px; border-left: 4px solid #16a34a;">
@@ -215,14 +220,16 @@ class EmailService {
     `;
   }
 
-  async sendConfirmationEmail(data: EmailData & { serviceType: string }): Promise<void> {
+  async sendConfirmationEmail(
+    data: EmailData & { serviceType: string },
+  ): Promise<void> {
     try {
       const mailOptions = {
         from: `"Nexulsly Team" <${this.fromEmail}>`,
         to: data.email,
         subject: `Thank you for your ${data.serviceType} inquiry - We'll be in touch soon!`,
         html: this.generateConfirmationEmailHtml(data.name, data.serviceType),
-        text: `Hi ${data.name},\n\nThank you for reaching out to Nexulsly about ${data.serviceType}! We've received your message and our team will review your requirements within 24 hours.\n\nWe'll get back to you within 1-2 business days to discuss how we can help with your ${data.serviceType.toLowerCase()} project.\n\nBest regards,\nThe Nexulsly Team\n\nNexulsly Digital Solutions\nOttawa, ON, Canada\nEmail: hello@nexulsly.com`,
+        text: `Hi ${data.name},\n\nThank you for reaching out to Nexulsly about ${data.serviceType}! We've received your message and our team will review your requirements within 24 hours.\n\nWe'll get back to you within 1-2 business days to discuss how we can help with your ${data.serviceType.toLowerCase()} project.\n\nBest regards,\nThe Nexulsly Team\n\nNexulsly Digital Solutions\nOttawa, ON, Canada\nEmail: hello@nexulsly.ca`,
       };
 
       await this.transporter.sendMail(mailOptions);
@@ -236,14 +243,16 @@ class EmailService {
     }
   }
 
-  async sendInternalNotification(data: EmailData & { serviceType: string }): Promise<void> {
+  async sendInternalNotification(
+    data: EmailData & { serviceType: string },
+  ): Promise<void> {
     try {
       const mailOptions = {
         from: `"Nexulsly Contact Form" <${this.fromEmail}>`,
         to: this.teamEmails,
         subject: `🚨 New ${data.serviceType} Inquiry: ${data.name} - ${data.email}`,
         html: this.generateInternalNotificationHtml(data),
-        text: `New contact form submission:\n\nName: ${data.name}\nEmail: ${data.email}\nService Requested: ${data.serviceType}\n\nMessage:\n${data.message}\n\nReceived: ${new Date().toLocaleString()}\nSource: Contact Form (nexulsly.com)\n\nPlease respond within 24 hours.`,
+        text: `New contact form submission:\n\nName: ${data.name}\nEmail: ${data.email}\nService Requested: ${data.serviceType}\n\nMessage:\n${data.message}\n\nReceived: ${new Date().toLocaleString()}\nSource: Contact Form (nexulsly.ca)\n\nPlease respond within 24 hours.`,
         replyTo: data.email,
       };
 
