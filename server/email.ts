@@ -250,7 +250,7 @@ class EmailService {
       const mailOptions = {
         from: `"Nexulsly Contact Form" <${this.fromEmail}>`,
         to: this.teamEmails,
-        subject: `🚨 New ${data.serviceType} Inquiry: ${data.name} - ${data.email}`,
+        subject: `🚨 New ${data.serviceType} Inquiry: ${data.name}`,
         html: this.generateInternalNotificationHtml(data),
         text: `New contact form submission:\n\nName: ${data.name}\nEmail: ${data.email}\nService Requested: ${data.serviceType}\n\nMessage:\n${data.message}\n\nReceived: ${new Date().toLocaleString()}\nSource: Contact Form (nexulsly.ca)\n\nPlease respond within 24 hours.`,
         replyTo: data.email,
