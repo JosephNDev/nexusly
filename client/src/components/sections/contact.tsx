@@ -179,6 +179,12 @@ export function ContactSection() {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Send us a Message</h3>
+                <p className="text-sm text-gray-600">
+                  <span className="text-red-500">*</span> Required fields
+                </p>
+              </div>
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
@@ -191,7 +197,7 @@ export function ContactSection() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-sm font-semibold text-slate-900">
-                            First Name
+                            First Name <span className="text-red-500">*</span>
                           </FormLabel>
                           <FormControl>
                             <Input
@@ -210,7 +216,7 @@ export function ContactSection() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-sm font-semibold text-slate-900">
-                            Last Name
+                            Last Name <span className="text-red-500">*</span>
                           </FormLabel>
                           <FormControl>
                             <Input
@@ -231,7 +237,7 @@ export function ContactSection() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-semibold text-slate-900">
-                          Email
+                          Email <span className="text-red-500">*</span>
                         </FormLabel>
                         <FormControl>
                           <Input
@@ -252,7 +258,7 @@ export function ContactSection() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-semibold text-slate-900">
-                          Project Type
+                          Project Type <span className="text-red-500">*</span>
                         </FormLabel>
                         <Select
                           onValueChange={field.onChange}
@@ -289,12 +295,12 @@ export function ContactSection() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm font-semibold text-slate-900">
-                          Message
+                          Message <span className="text-red-500">*</span>
                         </FormLabel>
                         <FormControl>
                           <Textarea
                             rows={4}
-                            placeholder="Tell us about your project..."
+                            placeholder="Tell us about your project... (minimum 10 characters)"
                             className="rounded-xl border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 resize-none"
                             {...field}
                           />
