@@ -16,7 +16,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Process email notifications
       const emailResult = await emailService.processContactForm({
-        name: contactData.name,
+        name: `${contactData.firstName} ${contactData.lastName}`,
         email: contactData.email,
         message: contactData.message
       });
