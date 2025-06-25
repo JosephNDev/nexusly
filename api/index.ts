@@ -13,7 +13,7 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool, schema: { contacts } });
 
 // Initialize email transporter
-const emailTransporter = nodemailer.createTransporter({
+const emailTransporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.office365.com',
   port: parseInt(process.env.SMTP_PORT || '587'),
   secure: process.env.SMTP_SECURE === 'true',
@@ -112,7 +112,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).end();
   }
 
-  if (req.method === 'POST' && req.url === '/api/contact') {
+  if (req.method === 'POST') {
     try {
       const contactData = insertContactSchema.parse(req.body);
       
@@ -149,7 +149,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         res.status(500).json({ success: false, message: "Failed to submit contact form" });
       }
     }
-  } else if (req.method === 'GET' && req.url === '/api/contacts') {
+  } else if (req.method === 'GET') {
     try {
       const allContacts = await db.select().from(contacts);
       res.status(200).json(allContacts);
