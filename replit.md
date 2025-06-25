@@ -128,8 +128,6 @@ Changelog:
 - June 25, 2025. Transformed analytics section into projects showcase
 - June 25, 2025. Created team member profiles in about section
 - June 25, 2025. Fixed TypeScript error in email service configuration
-- June 25, 2025. Updated Vercel deployment configuration for serverless functions
-- June 25, 2025. Created serverless-compatible API endpoint in api/index.ts
 ```
 
 ## User Preferences
