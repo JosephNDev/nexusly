@@ -142,7 +142,7 @@ class EmailService {
     `;
   }
 
-  private generateInternalNotificationHtml(data: EmailData): string {
+  private generateInternalNotificationHtml(data: EmailData & { serviceType: string }): string {
     return `
       <!DOCTYPE html>
       <html>
@@ -177,6 +177,11 @@ class EmailService {
               <div class="field">
                 <label>📧 Email:</label>
                 <div class="value"><a href="mailto:${data.email}">${data.email}</a></div>
+              </div>
+              
+              <div class="field">
+                <label>🎯 Service Requested:</label>
+                <div class="value" style="color: #059669; font-weight: 600;">${data.serviceType}</div>
               </div>
               
               <div class="field">
@@ -231,14 +236,14 @@ class EmailService {
     }
   }
 
-  async sendInternalNotification(data: EmailData): Promise<void> {
+  async sendInternalNotification(data: EmailData & { serviceType: string }): Promise<void> {
     try {
       const mailOptions = {
         from: `"Nexulsly Contact Form" <${this.fromEmail}>`,
         to: this.teamEmails,
-        subject: `🚨 New Contact: ${data.name} - ${data.email}`,
+        subject: `🚨 New ${data.serviceType} Inquiry: ${data.name} - ${data.email}`,
         html: this.generateInternalNotificationHtml(data),
-        text: `New contact form submission:\n\nName: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}\n\nReceived: ${new Date().toLocaleString()}\nSource: Contact Form (nexulsly.com)\n\nPlease respond within 24 hours.`,
+        text: `New contact form submission:\n\nName: ${data.name}\nEmail: ${data.email}\nService Requested: ${data.serviceType}\n\nMessage:\n${data.message}\n\nReceived: ${new Date().toLocaleString()}\nSource: Contact Form (nexulsly.com)\n\nPlease respond within 24 hours.`,
         replyTo: data.email,
       };
 
