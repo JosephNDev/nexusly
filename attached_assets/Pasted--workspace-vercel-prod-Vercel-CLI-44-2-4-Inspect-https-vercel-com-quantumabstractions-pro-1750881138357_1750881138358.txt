@@ -1,0 +1,70 @@
+~/workspace$ vercel --prod
+Vercel CLI 44.2.4
+🔍  Inspect: https://vercel.com/quantumabstractions-projects/nexusly/EHhoJk4Ee4F9gmEgEdgrAVdPKCzx [727ms]
+✅  Production: https://nexusly-ieeok2xho-quantumabstractions-projects.vercel.app [727ms]
+2025-06-25T19:50:12.379Z  Running build in Washington, D.C., USA (East) – iad1
+2025-06-25T19:50:12.379Z  Build machine configuration: 2 cores, 8 GB
+2025-06-25T19:50:12.392Z  Retrieving list of deployment files...
+2025-06-25T19:50:12.724Z  Downloading 153 deployment files...
+2025-06-25T19:50:15.020Z  Restored build cache from previous deployment (3g5si4YVyjXCcycrbQb4za8DNnHr)
+2025-06-25T19:50:15.336Z  Running "vercel build"
+2025-06-25T19:50:15.748Z  Vercel CLI 43.3.0
+2025-06-25T19:50:15.912Z  WARN! Due to `builds` existing in your configuration file, the Build and Development Settings defined in your Project Settings will not apply. Learn More: https://vercel.link/unused-build-settings
+2025-06-25T19:50:16.404Z  Installing dependencies...
+2025-06-25T19:50:17.691Z  
+2025-06-25T19:50:17.692Z  up to date in 1s
+2025-06-25T19:50:17.692Z  
+2025-06-25T19:50:17.693Z  65 packages are looking for funding
+2025-06-25T19:50:17.693Z    run `npm fund` for details
+2025-06-25T19:50:17.724Z  Running "npm run vercel-build"
+2025-06-25T19:50:17.834Z  
+2025-06-25T19:50:17.835Z  > rest-express@1.0.0 vercel-build
+2025-06-25T19:50:17.835Z  > vite build
+2025-06-25T19:50:17.835Z  
+2025-06-25T19:50:18.116Z  vite v5.4.14 building for production...
+2025-06-25T19:50:18.468Z  transforming...
+2025-06-25T19:50:18.734Z  Browserslist: browsers data (caniuse-lite) is 8 months old. Please run:
+2025-06-25T19:50:18.735Z    npx update-browserslist-db@latest
+2025-06-25T19:50:18.735Z    Why you should do it regularly: https://github.com/browserslist/update-db#readme
+2025-06-25T19:50:23.638Z  ✓ 2171 modules transformed.
+2025-06-25T19:50:24.118Z  rendering chunks...
+2025-06-25T19:50:24.150Z  computing gzip size...
+2025-06-25T19:50:24.196Z  ../dist/public/index.html                   0.63 kB │ gzip:   0.38 kB
+2025-06-25T19:50:24.197Z  ../dist/public/assets/index-CwUfeKxl.css   75.36 kB │ gzip:  12.96 kB
+2025-06-25T19:50:24.197Z  ../dist/public/assets/index-B6U4A8dV.js   603.06 kB │ gzip: 186.00 kB
+2025-06-25T19:50:24.197Z  ✓ built in 6.05s
+2025-06-25T19:50:24.198Z  
+2025-06-25T19:50:24.198Z  (!) Some chunks are larger than 500 kB after minification. Consider:
+2025-06-25T19:50:24.198Z  - Using dynamic import() to code-split the application
+2025-06-25T19:50:24.198Z  - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2025-06-25T19:50:24.199Z  - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+2025-06-25T19:50:24.348Z  Running "npm run vercel-build"
+2025-06-25T19:50:24.453Z  
+2025-06-25T19:50:24.454Z  > rest-express@1.0.0 vercel-build
+2025-06-25T19:50:24.454Z  > vite build
+2025-06-25T19:50:24.454Z  
+2025-06-25T19:50:24.684Z  vite v5.4.14 building for production...
+2025-06-25T19:50:24.730Z  transforming...
+2025-06-25T19:50:24.971Z  Browserslist: browsers data (caniuse-lite) is 8 months old. Please run:
+2025-06-25T19:50:24.972Z    npx update-browserslist-db@latest
+2025-06-25T19:50:24.972Z    Why you should do it regularly: https://github.com/browserslist/update-db#readme
+2025-06-25T19:50:29.814Z  ✓ 2171 modules transformed.
+2025-06-25T19:50:30.195Z  rendering chunks...
+2025-06-25T19:50:30.205Z  computing gzip size...
+2025-06-25T19:50:30.224Z  ../dist/public/index.html                   0.63 kB │ gzip:   0.38 kB
+2025-06-25T19:50:30.225Z  ../dist/public/assets/index-CwUfeKxl.css   75.36 kB │ gzip:  12.96 kB
+2025-06-25T19:50:30.229Z  ../dist/public/assets/index-B6U4A8dV.js   603.06 kB │ gzip: 186.00 kB
+2025-06-25T19:50:30.229Z  ✓ built in 5.52s
+2025-06-25T19:50:30.229Z  
+2025-06-25T19:50:30.230Z  (!) Some chunks are larger than 500 kB after minification. Consider:
+2025-06-25T19:50:30.230Z  - Using dynamic import() to code-split the application
+2025-06-25T19:50:30.230Z  - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2025-06-25T19:50:30.231Z  - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+2025-06-25T19:50:30.456Z  Using TypeScript 5.6.3 (local user-provided)
+2025-06-25T19:50:36.226Z  server/vite.ts(39,5): error TS2322: Type '{ middlewareMode: boolean; hmr: { server: Server<typeof IncomingMessage, typeof ServerResponse>; }; allowedHosts: boolean; }' is not assignable to type 'ServerOptions'.
+2025-06-25T19:50:36.227Z    Types of property 'allowedHosts' are incompatible.
+2025-06-25T19:50:36.227Z      Type 'boolean' is not assignable to type 'true | string[] | undefined'.
+2025-06-25T19:50:36.227Z  
+2025-06-25T19:50:45.411Z  Build Completed in /vercel/output [29s]
+2025-06-25T19:50:45.598Z  Deploying outputs...
+❗️  Due to `builds` existing in your configuration file, the Build and Development Settings defined in your Project Settings will not apply. Learn More: https://vercel.link/unused-build-settings
