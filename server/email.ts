@@ -105,7 +105,7 @@ class EmailService {
             <div class="content">
               <div class="service-info">
                 <strong>🎯 Service Requested:</strong> ${serviceType}<br>
-                <p style="margin: 10px 0 0 0; font-size: 14px; color: #059669;">Our ${serviceType.toLowerCase()} specialists will review your requirements and provide tailored recommendations.</p>
+                <p style="margin: 10px 0 0 0; font-size: 14px; color: white;">Our ${serviceType.toLowerCase()} specialists will review your requirements and provide tailored recommendations.</p>
               </div>
               
               <h2>What happens next?</h2>
