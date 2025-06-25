@@ -31,7 +31,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "joseph@nexulsly.com",
+    value: "hello@nexulsly.ca",
     bgColor: "bg-primary-100",
     iconColor: "text-primary-600",
   },
@@ -75,12 +75,14 @@ export function ContactSection() {
       if (response.emailSent) {
         toast({
           title: "Message sent successfully!",
-          description: "We've sent you a confirmation email and will get back to you within 1-2 business days.",
+          description:
+            "We've sent you a confirmation email and will get back to you within 1-2 business days.",
         });
       } else {
         toast({
           title: "Message received!",
-          description: "Your message was saved successfully. We'll get back to you soon!",
+          description:
+            "Your message was saved successfully. We'll get back to you soon!",
         });
       }
       form.reset();
