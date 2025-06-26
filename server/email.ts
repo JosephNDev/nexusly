@@ -7,20 +7,6 @@ interface EmailData {
   message: string;
 }
 
-// Email configuration from environment variables
-const emailConfig = {
-  host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: parseInt(process.env.SMTP_PORT || '587') === 465, // true for 465, false for other ports
-  requireTLS: true,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-  debug: false, // Disable debug to reduce noise
-  logger: false,
-};
-
 interface EmailConfig {
   host: string;
   port: number;
@@ -42,17 +28,17 @@ class EmailService {
 
     // Configure SMTP transporter
     const emailConfig: EmailConfig = {
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
+      host: process.env.SMTP_HOST || "smtp.office365.com",
       port: parseInt(process.env.SMTP_PORT || "587"),
-      secure: parseInt(process.env.SMTP_PORT || "587") === 465, // true for 465, false for other ports
+      secure: process.env.SMTP_SECURE === "true", // true for 465, false for other ports
       auth: {
         user: process.env.SMTP_USER!,
-        pass: process.env.SMTP_PASS!,
+        pass: process.env.SMTP_PASSWORD!,
       },
     };
 
     this.transporter = nodemailer.createTransport(emailConfig);
-    this.fromEmail = process.env.SMTP_FROM || "hello@nexusly.ca";
+    this.fromEmail = process.env.FROM_EMAIL || "hello@nexusly.ca";
     this.teamEmails = (
       process.env.TEAM_EMAILS ||
       "nikuzabo.j@gmail.com,fabrice.ndizihiwe@gmail.com"
@@ -60,14 +46,12 @@ class EmailService {
       .split(",")
       .map((email) => email.trim());
 
-    // Verify connection on initialization (non-blocking)
-    this.verifyConnection().catch(() => {
-      // Ignore verification errors during startup
-    });
+    // Verify connection on initialization
+    this.verifyConnection();
   }
 
   private validateEnvironmentVariables(): void {
-    const requiredVars = ["SMTP_USER", "SMTP_PASS"];
+    const requiredVars = ["SMTP_USER", "SMTP_PASSWORD"];
     const missingVars = requiredVars.filter((varName) => !process.env[varName]);
 
     if (missingVars.length > 0) {
@@ -79,14 +63,11 @@ class EmailService {
 
   private async verifyConnection(): Promise<void> {
     try {
-      log(`Attempting SMTP connection to ${process.env.SMTP_HOST}:${process.env.SMTP_PORT} with user: ${process.env.SMTP_USER}`, "email");
       await this.transporter.verify();
       log("SMTP connection verified successfully", "email");
     } catch (error) {
       log(`SMTP connection failed: ${error}`, "email");
-      log(`SMTP Config: host=${process.env.SMTP_HOST}, port=${process.env.SMTP_PORT}, secure=${parseInt(process.env.SMTP_PORT || '587') === 465}`, "email");
-      log("Warning: SMTP verification failed, but server will continue. Emails may not work.", "email");
-      // Don't throw error - let server continue running
+      throw new Error("Failed to connect to SMTP server");
     }
   }
 

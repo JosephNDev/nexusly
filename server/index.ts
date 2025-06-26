@@ -36,7 +36,7 @@ app.use((req, res, next) => {
   next();
 });
 
-export async function startApp() {
+(async () => {
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -59,18 +59,12 @@ export async function startApp() {
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || "5000", 10);
-  const host = "0.0.0.0";
-
-  if (!process.env.VERCEL) {
-    server.listen(port, host, () => {
-      log(`serving on port ${port}`);
-    });
-  }
-
-  return app;
-}
-
-if (!process.env.VERCEL) {
-  startApp();
-}
+  const port = 5000;
+  server.listen({
+    port,
+    host: "0.0.0.0",
+    reusePort: true,
+  }, () => {
+    log(`serving on port ${port}`);
+  });
+})();

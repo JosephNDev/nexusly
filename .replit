@@ -11,20 +11,12 @@ deploymentTarget = "autoscale"
 build = ["npm", "run", "build"]
 run = ["npm", "run", "start"]
 
-[env]
-SMTP_HOST = "mail.nexusly.ca"
-SMTP_PORT = "587"
-SMTP_USER = "hello@nexusly.ca"
-SMTP_PASS = "$uper-$3cret_202x"
-SMTP_FROM = "hello@nexusly.ca"
-TEAM_EMAILS = "nikuzabo.j@gmail.com"
-
 [[ports]]
 localPort = 5000
 externalPort = 80
 
 [workflows]
-runButton = "Dev Server"
+runButton = "Project"
 
 [[workflows.workflow]]
 name = "Project"
@@ -43,16 +35,3 @@ author = "agent"
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
-
-[[workflows.workflow]]
-name = "Dev Server"
-author = 42783156
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "pkill -f \"tsx server/index.ts\" || true"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npm run dev"
