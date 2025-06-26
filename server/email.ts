@@ -40,9 +40,9 @@ class EmailService {
         pass: process.env.SMTP_PASSWORD!,
       },
       tls: {
-        // Handle certificate mismatch for shared hosting providers
+        /// Handle certificate mismatch for shared hosting providers
         rejectUnauthorized: false,
-        servername: process.env.SMTP_HOST || "smtp.office365.com"
+        servername: process.env.SMTP_HOST || "smtp.office365.com",
       },
     };
 
