@@ -39,17 +39,17 @@ class EmailService {
 
     // Configure SMTP transporter
     const emailConfig: EmailConfig = {
-      host: process.env.SMTP_HOST || "smtp.office365.com",
+      host: process.env.SMTP_HOST || "smtp.gmail.com",
       port: parseInt(process.env.SMTP_PORT || "587"),
-      secure: process.env.SMTP_SECURE === "true", // true for 465, false for other ports
+      secure: false, // true for 465, false for other ports
       auth: {
         user: process.env.SMTP_USER!,
-        pass: process.env.SMTP_PASSWORD!,
+        pass: process.env.SMTP_PASS!,
       },
     };
 
     this.transporter = nodemailer.createTransport(emailConfig);
-    this.fromEmail = process.env.FROM_EMAIL || "hello@nexusly.ca";
+    this.fromEmail = process.env.SMTP_FROM || "hello@nexusly.ca";
     this.teamEmails = (
       process.env.TEAM_EMAILS ||
       "nikuzabo.j@gmail.com,fabrice.ndizihiwe@gmail.com"
@@ -62,7 +62,7 @@ class EmailService {
   }
 
   private validateEnvironmentVariables(): void {
-    const requiredVars = ["SMTP_USER", "SMTP_PASSWORD"];
+    const requiredVars = ["SMTP_USER", "SMTP_PASS"];
     const missingVars = requiredVars.filter((varName) => !process.env[varName]);
 
     if (missingVars.length > 0) {
