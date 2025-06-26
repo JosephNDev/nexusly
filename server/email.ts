@@ -17,8 +17,8 @@ const emailConfig = {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-  debug: true,
-  logger: true,
+  debug: false, // Disable debug to reduce noise
+  logger: false,
 };
 
 interface EmailConfig {
@@ -60,8 +60,10 @@ class EmailService {
       .split(",")
       .map((email) => email.trim());
 
-    // Verify connection on initialization
-    this.verifyConnection();
+    // Verify connection on initialization (non-blocking)
+    this.verifyConnection().catch(() => {
+      // Ignore verification errors during startup
+    });
   }
 
   private validateEnvironmentVariables(): void {
@@ -83,9 +85,8 @@ class EmailService {
     } catch (error) {
       log(`SMTP connection failed: ${error}`, "email");
       log(`SMTP Config: host=${process.env.SMTP_HOST}, port=${process.env.SMTP_PORT}, secure=${parseInt(process.env.SMTP_PORT || '587') === 465}`, "email");
-      
-      // Don't throw error immediately - let's try to continue
-      log("Warning: SMTP verification failed, but continuing anyway. Emails may not work.", "email");
+      log("Warning: SMTP verification failed, but server will continue. Emails may not work.", "email");
+      // Don't throw error - let server continue running
     }
   }
 
