@@ -13,7 +13,7 @@ run = ["npm", "run", "start"]
 
 [env]
 SMTP_HOST = "mail.nexusly.ca"
-SMTP_PORT = "465"
+SMTP_PORT = "587"
 SMTP_USER = "hello@nexusly.ca"
 SMTP_PASS = "$uper-$3cret_202x"
 SMTP_FROM = "hello@nexusly.ca"
