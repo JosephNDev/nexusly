@@ -1,9 +1,11 @@
 {
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "dist",
+  "installCommand": "npm ci",
   "functions": {
     "api/index.ts": {
-      "runtime": "@vercel/node@3.0.0"
+      "runtime": "@vercel/node@3.0.0",
+      "maxDuration": 30
     }
   },
   "rewrites": [
@@ -11,5 +13,14 @@
       "source": "/api/(.*)",
       "destination": "/api/index.ts"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "NODE_VERSION": "18.x",
+      "NPM_VERSION": "latest"
+    }
+  },
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
