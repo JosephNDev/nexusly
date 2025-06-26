@@ -60,14 +60,10 @@ export async function startApp() {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = process.env.PORT || 5000;
-  const host = process.env.VERCEL ? "0.0.0.0" : "0.0.0.0";
+  const host = "0.0.0.0";
 
   if (!process.env.VERCEL) {
-    server.listen({
-      port,
-      host,
-      reusePort: true,
-    }, () => {
+    server.listen(port, host, () => {
       log(`serving on port ${port}`);
     });
   }
@@ -75,4 +71,6 @@ export async function startApp() {
   return app;
 }
 
-startApp();
+if (!process.env.VERCEL) {
+  startApp();
+}
