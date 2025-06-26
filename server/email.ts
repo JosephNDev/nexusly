@@ -12,10 +12,13 @@ const emailConfig = {
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
   port: parseInt(process.env.SMTP_PORT || '587'),
   secure: parseInt(process.env.SMTP_PORT || '587') === 465, // true for 465, false for other ports
+  requireTLS: true,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  debug: true,
+  logger: true,
 };
 
 interface EmailConfig {
@@ -74,11 +77,15 @@ class EmailService {
 
   private async verifyConnection(): Promise<void> {
     try {
+      log(`Attempting SMTP connection to ${process.env.SMTP_HOST}:${process.env.SMTP_PORT} with user: ${process.env.SMTP_USER}`, "email");
       await this.transporter.verify();
       log("SMTP connection verified successfully", "email");
     } catch (error) {
       log(`SMTP connection failed: ${error}`, "email");
-      throw new Error("Failed to connect to SMTP server");
+      log(`SMTP Config: host=${process.env.SMTP_HOST}, port=${process.env.SMTP_PORT}, secure=${parseInt(process.env.SMTP_PORT || '587') === 465}`, "email");
+      
+      // Don't throw error immediately - let's try to continue
+      log("Warning: SMTP verification failed, but continuing anyway. Emails may not work.", "email");
     }
   }
 
