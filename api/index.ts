@@ -28,7 +28,7 @@ class VercelEmailService {
   private teamEmails: string[];
 
   constructor() {
-    this.transporter = nodemailer.createTransporter(emailConfig);
+    this.transporter = nodemailer.createTransport(emailConfig);
     this.fromEmail = process.env.SMTP_FROM || "hello@nexusly.ca";
     this.teamEmails = (
       process.env.TEAM_EMAILS || "nikuzabo.j@gmail.com"
