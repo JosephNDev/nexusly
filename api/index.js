@@ -11,7 +11,18 @@ const express = require('express');
 const { neonConfig } = require('@neondatabase/serverless');
 const { Pool } = require('@neondatabase/serverless');
 const { drizzle } = require('drizzle-orm/neon-serverless');
-const { contacts } = require('../shared/schema.js');
+// We'll define the schema inline for the serverless function
+const { pgTable, text, serial, timestamp } = require("drizzle-orm/pg-core");
+
+const contacts = pgTable("contacts", {
+  id: serial("id").primaryKey(),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  projectType: text("project_type").notNull(),
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
 const nodemailer = require('nodemailer');
 const ws = require('ws');
 
