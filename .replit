@@ -11,6 +11,14 @@ deploymentTarget = "autoscale"
 build = ["npm", "run", "build"]
 run = ["npm", "run", "start"]
 
+[env]
+SMTP_HOST = "mail.nexusly.ca"
+SMTP_PORT = "465"
+SMTP_USER = "your-hello@nexusly.ca"
+SMTP_PASS = "your-$uper-$3cret_202x"
+SMTP_FROM = "your-hello@nexusly.ca"
+TEAM_EMAILS = "your-nikuzabo.j@gmail.com"
+
 [[ports]]
 localPort = 5000
 externalPort = 80
