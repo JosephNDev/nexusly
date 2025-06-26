@@ -1,3 +1,4 @@
+
 {
   "version": 2,
   "builds": [
@@ -9,10 +10,15 @@
       }
     }
   ],
+  "functions": {
+    "api/contact.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/index.js"
+      "src": "/api/contact",
+      "dest": "/api/contact.ts"
     },
     {
       "src": "/(.*)",
