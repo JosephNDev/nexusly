@@ -1,7 +1,9 @@
 {
   "version": 2,
   "functions": {
-    "api/contact.ts": {}
+    "api/contact.ts": {
+      "runtime": "@vercel/node"
+    }
   },
   "routes": [
     {
