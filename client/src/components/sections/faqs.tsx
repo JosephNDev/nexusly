@@ -42,7 +42,7 @@ const faqs = [
     icon: HeadphonesIcon,
     question: "Do you provide ongoing support and maintenance?",
     answer:
-      "Yes, we offer comprehensive post-launch support including 24/7 monitoring, regular updates, security patches, performance optimization, and feature enhancements. Our support packages are tailored to your specific needs and budget.",
+      "Yes, we offer comprehensive post-launch support including monitoring, regular updates, security patches, performance optimization, and feature enhancements. Our support packages are tailored to your specific needs and budget.",
   },
   {
     icon: Code,
@@ -54,7 +54,7 @@ const faqs = [
     icon: Users,
     question: "How do you handle project communication?",
     answer:
-      "We believe in transparent communication throughout the project lifecycle. You'll have a dedicated project manager, regular progress updates, weekly demos, and access to our project management tools to track progress in real-time. ",
+      "We believe in transparent communication throughout the project lifecycle. You'll have a dedicated project manager and regular progress updates",
   },
   {
     icon: Wrench,
