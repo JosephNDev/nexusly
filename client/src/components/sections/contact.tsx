@@ -279,8 +279,14 @@ export function ContactSection() {
                             <SelectItem value="performance-optimization">
                               Performance Optimization
                             </SelectItem>
-                            <SelectItem value="consulting">
-                              Consulting
+                            <SelectItem value="cms-integration">
+                              CMS Integration
+                            </SelectItem>
+                            <SelectItem value="e-commerce-solutions">
+                              E-Commerce Solutions
+                            </SelectItem>
+                            <SelectItem value="automation-workflows">
+                              Automation & Workflows
                             </SelectItem>
                           </SelectContent>
                         </Select>
