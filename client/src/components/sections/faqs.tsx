@@ -7,6 +7,10 @@ import {
   Clock,
   Shield,
   Lightbulb,
+  HeadphonesIcon,
+  Code,
+  Users,
+  Wrench,
 } from "lucide-react";
 
 const faqs = [
@@ -35,21 +39,25 @@ const faqs = [
       "Our focus on data-driven results, technical excellence, and long-term partnerships sets us apart. We combine cutting-edge technology with strategic business insights to deliver solutions that not only look great but drive measurable business growth.",
   },
   {
+    icon: HeadphonesIcon,
     question: "Do you provide ongoing support and maintenance?",
     answer:
       "Yes, we offer comprehensive post-launch support including 24/7 monitoring, regular updates, security patches, performance optimization, and feature enhancements. Our support packages are tailored to your specific needs and budget.",
   },
   {
+    icon: Code,
     question: "What technologies do you work with?",
     answer:
       "We work with modern technologies including React, Next.js, Vue.js, Node.js, Python, PostgreSQL, AWS, and more. We choose the best technology stack for each project based on your specific requirements, scalability needs, and long-term goals.",
   },
   {
+    icon: Users,
     question: "How do you handle project communication?",
     answer:
       "We believe in transparent communication throughout the project lifecycle. You'll have a dedicated project manager, regular progress updates, weekly demos, and access to our project management tools to track progress in real-time. ",
   },
   {
+    icon: Wrench,
     question: "Can you help with existing projects or only new ones?",
     answer:
       "We can definitely help with existing projects! Whether you need performance improvements, feature additions, bug fixes, or a complete redesign, our team can audit your current system and provide solutions to enhance your digital presence.",
