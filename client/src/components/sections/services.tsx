@@ -175,11 +175,11 @@ export function ServicesSection() {
                   </li>
                 ))}
               </ul>
-              <button
+              {/* <button
                 className={`${service.textColor} font-semibold hover:opacity-70 transition-all duration-200 group-hover:translate-x-2`}
               >
                 Learn More →
-              </button>
+              </button> */}
             </motion.div>
           ))}
         </div>
