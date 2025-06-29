@@ -54,7 +54,7 @@ const faqs = [
     icon: Users,
     question: "How do you handle project communication?",
     answer:
-      "We believe in transparent communication throughout the project lifecycle. You'll have a dedicated project manager and regular progress updates",
+      "We believe in transparent communication throughout the project lifecycle. You'll have a dedicated project manager and regular progress updates.",
   },
   {
     icon: Wrench,
