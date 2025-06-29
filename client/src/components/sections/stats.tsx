@@ -40,9 +40,12 @@ const stats = [
 
 export function StatsSection() {
   const { ref, hasIntersected } = useIntersectionObserver();
+  const isVisible = false; // Set to true to show, false to hide
+
+  if (!isVisible) return null;
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+    <section ref={ref} className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow"></div>
