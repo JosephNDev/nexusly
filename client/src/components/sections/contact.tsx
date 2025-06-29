@@ -288,6 +288,9 @@ export function ContactSection() {
                             <SelectItem value="automation-workflows">
                               Automation & Workflows
                             </SelectItem>
+                            <SelectItem value="other">
+                              Other
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
