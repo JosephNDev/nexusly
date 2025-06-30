@@ -16,7 +16,7 @@ export function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden"
     >
-      <NetworkAnimation nodeCount={15} />
+      <NetworkAnimation nodeCount={12} theme="dark" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div

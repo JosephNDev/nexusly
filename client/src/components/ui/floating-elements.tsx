@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 interface NetworkAnimationProps {
   nodeCount?: number;
@@ -6,54 +7,83 @@ interface NetworkAnimationProps {
   theme?: 'dark' | 'light';
 }
 
-// Professional network animation for dark themes
+interface AnimatedNode {
+  id: number;
+  x: number;
+  y: number;
+  targetX: number;
+  targetY: number;
+  size: number;
+}
+
+// Professional network animation with moving nodes and connections
 export function NetworkAnimation({ 
-  nodeCount = 12, 
+  nodeCount = 15, 
   className = '',
   theme = 'dark'
 }: NetworkAnimationProps) {
-  const nodes = Array.from({ length: nodeCount }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    delay: Math.random() * 2,
-    duration: 15 + Math.random() * 10
-  }));
+  const [nodes, setNodes] = useState<AnimatedNode[]>([]);
 
-  const strokeColor = theme === 'dark' ? 'rgba(59, 130, 246, 0.4)' : 'rgba(59, 130, 246, 0.2)';
-  const fillColor = theme === 'dark' ? 'rgba(59, 130, 246, 0.6)' : 'rgba(59, 130, 246, 0.3)';
-  const nodeRadius = theme === 'dark' ? '0.3' : '0.2';
+  useEffect(() => {
+    // Initialize nodes with random positions
+    const initialNodes: AnimatedNode[] = Array.from({ length: nodeCount }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      targetX: Math.random() * 100,
+      targetY: Math.random() * 100,
+      size: 0.4 + Math.random() * 0.6
+    }));
+    setNodes(initialNodes);
+
+    // Update node positions periodically
+    const interval = setInterval(() => {
+      setNodes(prevNodes => 
+        prevNodes.map(node => ({
+          ...node,
+          targetX: Math.random() * 100,
+          targetY: Math.random() * 100
+        }))
+      );
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [nodeCount]);
+
+  const connectionDistance = 35;
+  const strokeColor = theme === 'dark' ? 'rgba(59, 130, 246, 0.8)' : 'rgba(59, 130, 246, 0.4)';
+  const fillColor = theme === 'dark' ? 'rgba(59, 130, 246, 1)' : 'rgba(59, 130, 246, 0.7)';
   
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       <svg 
         className="absolute inset-0 w-full h-full"
-        style={{ zIndex: -1 }}
+        style={{ zIndex: 0 }}
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
       >
-        {/* Connection lines */}
+        {/* Dynamic connection lines */}
         {nodes.map((node1, i) => 
           nodes.slice(i + 1).map((node2, j) => {
             const distance = Math.sqrt(
               Math.pow(node1.x - node2.x, 2) + Math.pow(node1.y - node2.y, 2)
             );
-            if (distance < 25) {
+            if (distance < connectionDistance) {
+              const opacity = (1 - distance / connectionDistance) * 0.6;
               return (
                 <motion.line
-                  key={`${i}-${j}`}
+                  key={`${i}-${j}-${node1.x}-${node1.y}`}
                   x1={node1.x}
                   y1={node1.y}
                   x2={node2.x}
                   y2={node2.y}
                   stroke={strokeColor}
-                  strokeWidth="0.1"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0.5, 0] }}
+                  strokeWidth="0.3"
+                  opacity={opacity}
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
                   transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    delay: (i + j) * 0.5,
+                    duration: 2,
                     ease: "easeInOut"
                   }}
                 />
@@ -63,26 +93,45 @@ export function NetworkAnimation({
           })
         )}
         
-        {/* Animated nodes */}
+        {/* Moving animated nodes */}
         {nodes.map((node) => (
-          <motion.circle
-            key={node.id}
-            cx={node.x}
-            cy={node.y}
-            r={nodeRadius}
-            fill={fillColor}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ 
-              scale: [0.5, 1, 0.5],
-              opacity: [0.3, 0.8, 0.3]
-            }}
-            transition={{
-              duration: node.duration,
-              repeat: Infinity,
-              delay: node.delay,
-              ease: "easeInOut"
-            }}
-          />
+          <motion.g key={node.id}>
+            {/* Node glow effect */}
+            <motion.circle
+              cx={node.x}
+              cy={node.y}
+              r={node.size * 1.5}
+              fill={fillColor}
+              opacity="0.3"
+              animate={{
+                cx: node.targetX,
+                cy: node.targetY,
+                scale: [1, 1.2, 1]
+              }}
+              transition={{
+                cx: { duration: 8, ease: "easeInOut" },
+                cy: { duration: 8, ease: "easeInOut" },
+                scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+              }}
+            />
+            {/* Main node */}
+            <motion.circle
+              cx={node.x}
+              cy={node.y}
+              r={node.size}
+              fill={fillColor}
+              animate={{
+                cx: node.targetX,
+                cy: node.targetY,
+                opacity: [0.5, 1, 0.5]
+              }}
+              transition={{
+                cx: { duration: 8, ease: "easeInOut" },
+                cy: { duration: 8, ease: "easeInOut" },
+                opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+              }}
+            />
+          </motion.g>
         ))}
       </svg>
     </div>
