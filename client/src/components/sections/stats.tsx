@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { AnimatedCounter } from '@/components/ui/animated-counter';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import { LightNetworkAnimation } from '@/components/ui/floating-elements';
 import { Trophy, Users, TrendingUp, Award } from 'lucide-react';
 
 const stats = [
@@ -47,11 +48,7 @@ export function StatsSection() {
   return (
     <section ref={ref} className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
       {/* Background Decoration */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-10 left-1/2 w-72 h-72 bg-gradient-to-r from-green-400 to-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow" style={{ animationDelay: '4s' }}></div>
-      </div>
+      <LightNetworkAnimation nodeCount={5} connectionDistance={180} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
