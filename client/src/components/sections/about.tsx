@@ -63,7 +63,7 @@ export function AboutSection() {
       className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden"
     >
       {/* Background Decoration */}
-      <LightNetworkAnimation nodeCount={4} connectionDistance={200} />
+      <LightNetworkAnimation nodeCount={4} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
