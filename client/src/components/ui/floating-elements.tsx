@@ -7,36 +7,34 @@ interface NetworkAnimationProps {
   theme?: 'dark' | 'light';
 }
 
-interface AnimatedNode {
+interface NetworkNode {
   id: number;
   x: number;
   y: number;
   targetX: number;
   targetY: number;
-  size: number;
 }
 
-// Professional network animation with moving nodes and connections
+// Dark-themed network animation with connected nodes and lines
 export function NetworkAnimation({ 
-  nodeCount = 15, 
+  nodeCount = 20, 
   className = '',
   theme = 'dark'
 }: NetworkAnimationProps) {
-  const [nodes, setNodes] = useState<AnimatedNode[]>([]);
+  const [nodes, setNodes] = useState<NetworkNode[]>([]);
 
   useEffect(() => {
-    // Initialize nodes with random positions
-    const initialNodes: AnimatedNode[] = Array.from({ length: nodeCount }, (_, i) => ({
+    // Initialize nodes across the screen
+    const initialNodes: NetworkNode[] = Array.from({ length: nodeCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       targetX: Math.random() * 100,
-      targetY: Math.random() * 100,
-      size: 0.4 + Math.random() * 0.6
+      targetY: Math.random() * 100
     }));
     setNodes(initialNodes);
 
-    // Update node positions periodically
+    // Continuously move nodes to create network effect
     const interval = setInterval(() => {
       setNodes(prevNodes => 
         prevNodes.map(node => ({
@@ -45,46 +43,58 @@ export function NetworkAnimation({
           targetY: Math.random() * 100
         }))
       );
-    }, 8000);
+    }, 12000);
 
     return () => clearInterval(interval);
   }, [nodeCount]);
 
-  const connectionDistance = 35;
-  const strokeColor = theme === 'dark' ? 'rgba(59, 130, 246, 0.8)' : 'rgba(59, 130, 246, 0.4)';
-  const fillColor = theme === 'dark' ? 'rgba(59, 130, 246, 1)' : 'rgba(59, 130, 246, 0.7)';
+  const connectionDistance = 25;
+  
+  // Dark theme colors - bright blue for visibility on dark background
+  const nodeColor = theme === 'dark' ? '#60A5FA' : '#3B82F6';
+  const lineColor = theme === 'dark' ? '#3B82F6' : '#1E40AF';
   
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+      {/* Dark overlay for network visibility */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 via-slate-800/20 to-slate-900/30" />
+      
       <svg 
         className="absolute inset-0 w-full h-full"
-        style={{ zIndex: 0 }}
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
       >
-        {/* Dynamic connection lines */}
+        {/* Connection lines between nearby nodes */}
         {nodes.map((node1, i) => 
           nodes.slice(i + 1).map((node2, j) => {
             const distance = Math.sqrt(
               Math.pow(node1.x - node2.x, 2) + Math.pow(node1.y - node2.y, 2)
             );
             if (distance < connectionDistance) {
-              const opacity = (1 - distance / connectionDistance) * 0.6;
+              const opacity = Math.max(0.3, (1 - distance / connectionDistance) * 0.8);
               return (
                 <motion.line
-                  key={`${i}-${j}-${node1.x}-${node1.y}`}
+                  key={`line-${i}-${j}`}
                   x1={node1.x}
                   y1={node1.y}
                   x2={node2.x}
                   y2={node2.y}
-                  stroke={strokeColor}
+                  stroke={lineColor}
                   strokeWidth="0.3"
                   opacity={opacity}
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
+                  animate={{
+                    x1: node1.targetX,
+                    y1: node1.targetY,
+                    x2: node2.targetX,
+                    y2: node2.targetY,
+                    opacity: [opacity * 0.5, opacity, opacity * 0.5]
+                  }}
                   transition={{
-                    duration: 2,
-                    ease: "easeInOut"
+                    x1: { duration: 12, ease: "easeInOut" },
+                    y1: { duration: 12, ease: "easeInOut" },
+                    x2: { duration: 12, ease: "easeInOut" },
+                    y2: { duration: 12, ease: "easeInOut" },
+                    opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                   }}
                 />
               );
@@ -93,45 +103,27 @@ export function NetworkAnimation({
           })
         )}
         
-        {/* Moving animated nodes */}
+        {/* Network nodes */}
         {nodes.map((node) => (
-          <motion.g key={node.id}>
-            {/* Node glow effect */}
-            <motion.circle
-              cx={node.x}
-              cy={node.y}
-              r={node.size * 1.5}
-              fill={fillColor}
-              opacity="0.3"
-              animate={{
-                cx: node.targetX,
-                cy: node.targetY,
-                scale: [1, 1.2, 1]
-              }}
-              transition={{
-                cx: { duration: 8, ease: "easeInOut" },
-                cy: { duration: 8, ease: "easeInOut" },
-                scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-              }}
-            />
-            {/* Main node */}
-            <motion.circle
-              cx={node.x}
-              cy={node.y}
-              r={node.size}
-              fill={fillColor}
-              animate={{
-                cx: node.targetX,
-                cy: node.targetY,
-                opacity: [0.5, 1, 0.5]
-              }}
-              transition={{
-                cx: { duration: 8, ease: "easeInOut" },
-                cy: { duration: 8, ease: "easeInOut" },
-                opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-              }}
-            />
-          </motion.g>
+          <motion.circle
+            key={`node-${node.id}`}
+            cx={node.x}
+            cy={node.y}
+            r="0.4"
+            fill={nodeColor}
+            animate={{
+              cx: node.targetX,
+              cy: node.targetY,
+              opacity: [0.6, 1, 0.6],
+              r: [0.3, 0.5, 0.3]
+            }}
+            transition={{
+              cx: { duration: 12, ease: "easeInOut" },
+              cy: { duration: 12, ease: "easeInOut" },
+              opacity: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: node.id * 0.2 },
+              r: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: node.id * 0.2 }
+            }}
+          />
         ))}
       </svg>
     </div>
