@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import nexuslyLogo from '@assets/Nexusly Logo_1751207887115.png';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);

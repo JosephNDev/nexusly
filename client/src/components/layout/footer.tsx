@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Twitter, Linkedin } from "lucide-react";
+import nexuslyLogo from '@assets/Nexusly Logo_1751207887115.png';
 
 export function Footer() {
   const scrollToSection = (sectionId: string) => {
