@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { LightNetworkAnimation } from "@/components/ui/floating-elements";
 import { Star, Quote } from "lucide-react";
 
 const testimonials = [
@@ -48,7 +47,13 @@ export function TestimonialsSection() {
       className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden"
     >
       {/* Background Decoration */}
-      <LightNetworkAnimation nodeCount={7} />
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"></div>
+        <div
+          className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
+          style={{ animationDelay: "2s" }}
+        ></div>
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

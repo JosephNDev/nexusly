@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Calendar, Users, Globe } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { GradientAnimation } from "@/components/ui/floating-elements";
 
 const projects = [
   {
@@ -63,7 +62,13 @@ export function ProjectsSection() {
       className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 relative overflow-hidden"
     >
       {/* Background Elements */}
-      <GradientAnimation />
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"></div>
+        <div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
+          style={{ animationDelay: "3s" }}
+        ></div>
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
