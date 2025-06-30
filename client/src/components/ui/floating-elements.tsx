@@ -1,142 +1,87 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-
-interface Node {
-  id: number;
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-}
-
-interface Connection {
-  from: number;
-  to: number;
-  opacity: number;
-}
 
 interface NetworkAnimationProps {
   nodeCount?: number;
-  connectionDistance?: number;
   className?: string;
+  theme?: 'dark' | 'light';
 }
 
+// Professional network animation for dark themes
 export function NetworkAnimation({ 
   nodeCount = 12, 
-  connectionDistance = 150,
-  className = '' 
+  className = '',
+  theme = 'dark'
 }: NetworkAnimationProps) {
-  const [nodes, setNodes] = useState<Node[]>([]);
-  const [connections, setConnections] = useState<Connection[]>([]);
+  const nodes = Array.from({ length: nodeCount }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    delay: Math.random() * 2,
+    duration: 15 + Math.random() * 10
+  }));
 
-  useEffect(() => {
-    // Initialize nodes with random positions and velocities
-    const initialNodes: Node[] = Array.from({ length: nodeCount }, (_, i) => ({
-      id: i,
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-    }));
-    setNodes(initialNodes);
-
-    let animationId: number;
-    
-    const animate = () => {
-      setNodes(prevNodes => {
-        const newNodes = prevNodes.map(node => {
-          let newX = node.x + node.vx;
-          let newY = node.y + node.vy;
-          let newVx = node.vx;
-          let newVy = node.vy;
-
-          // Bounce off edges
-          if (newX <= 0 || newX >= window.innerWidth) {
-            newVx = -newVx;
-            newX = Math.max(0, Math.min(window.innerWidth, newX));
-          }
-          if (newY <= 0 || newY >= window.innerHeight) {
-            newVy = -newVy;
-            newY = Math.max(0, Math.min(window.innerHeight, newY));
-          }
-
-          return { ...node, x: newX, y: newY, vx: newVx, vy: newVy };
-        });
-
-        // Calculate connections
-        const newConnections: Connection[] = [];
-        for (let i = 0; i < newNodes.length; i++) {
-          for (let j = i + 1; j < newNodes.length; j++) {
-            const dx = newNodes[i].x - newNodes[j].x;
-            const dy = newNodes[i].y - newNodes[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < connectionDistance) {
-              const opacity = Math.max(0, 1 - distance / connectionDistance) * 0.3;
-              newConnections.push({
-                from: i,
-                to: j,
-                opacity
-              });
-            }
-          }
-        }
-        setConnections(newConnections);
-
-        return newNodes;
-      });
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [nodeCount, connectionDistance]);
-
+  const strokeColor = theme === 'dark' ? 'rgba(59, 130, 246, 0.4)' : 'rgba(59, 130, 246, 0.2)';
+  const fillColor = theme === 'dark' ? 'rgba(59, 130, 246, 0.6)' : 'rgba(59, 130, 246, 0.3)';
+  const nodeRadius = theme === 'dark' ? '0.3' : '0.2';
+  
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       <svg 
         className="absolute inset-0 w-full h-full"
         style={{ zIndex: -1 }}
+        viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid slice"
       >
-        {/* Render connections */}
-        {connections.map((connection, index) => {
-          const fromNode = nodes[connection.from];
-          const toNode = nodes[connection.to];
-          if (!fromNode || !toNode) return null;
-          
-          return (
-            <motion.line
-              key={`${connection.from}-${connection.to}`}
-              x1={fromNode.x}
-              y1={fromNode.y}
-              x2={toNode.x}
-              y2={toNode.y}
-              stroke="rgba(59, 130, 246, 0.4)"
-              strokeWidth="1"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: connection.opacity }}
-              transition={{ duration: 0.3 }}
-            />
-          );
-        })}
+        {/* Connection lines */}
+        {nodes.map((node1, i) => 
+          nodes.slice(i + 1).map((node2, j) => {
+            const distance = Math.sqrt(
+              Math.pow(node1.x - node2.x, 2) + Math.pow(node1.y - node2.y, 2)
+            );
+            if (distance < 25) {
+              return (
+                <motion.line
+                  key={`${i}-${j}`}
+                  x1={node1.x}
+                  y1={node1.y}
+                  x2={node2.x}
+                  y2={node2.y}
+                  stroke={strokeColor}
+                  strokeWidth="0.1"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 0.5, 0] }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    delay: (i + j) * 0.5,
+                    ease: "easeInOut"
+                  }}
+                />
+              );
+            }
+            return null;
+          })
+        )}
         
-        {/* Render nodes */}
+        {/* Animated nodes */}
         {nodes.map((node) => (
           <motion.circle
             key={node.id}
             cx={node.x}
             cy={node.y}
-            r="3"
-            fill="rgba(59, 130, 246, 0.6)"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: node.id * 0.1 }}
+            r={nodeRadius}
+            fill={fillColor}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ 
+              scale: [0.5, 1, 0.5],
+              opacity: [0.3, 0.8, 0.3]
+            }}
+            transition={{
+              duration: node.duration,
+              repeat: Infinity,
+              delay: node.delay,
+              ease: "easeInOut"
+            }}
           />
         ))}
       </svg>
@@ -144,7 +89,21 @@ export function NetworkAnimation({
   );
 }
 
-// Gradient animation background for sections
+// Light-themed network animation for bright sections
+export function LightNetworkAnimation({ 
+  nodeCount = 8, 
+  className = '' 
+}: NetworkAnimationProps) {
+  return (
+    <NetworkAnimation 
+      nodeCount={nodeCount} 
+      className={className} 
+      theme="light" 
+    />
+  );
+}
+
+// Gradient animation background for dark sections
 export function GradientAnimation({ className = '' }: { className?: string }) {
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
@@ -194,131 +153,7 @@ export function GradientAnimation({ className = '' }: { className?: string }) {
   );
 }
 
-// Light-themed network animation for bright sections
-export function LightNetworkAnimation({ 
-  nodeCount = 8, 
-  connectionDistance = 140,
-  className = '' 
-}: NetworkAnimationProps) {
-  const [nodes, setNodes] = useState<Node[]>([]);
-  const [connections, setConnections] = useState<Connection[]>([]);
-
-  useEffect(() => {
-    // Initialize nodes with random positions and velocities
-    const initialNodes: Node[] = Array.from({ length: nodeCount }, (_, i) => ({
-      id: i,
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.3, // Slower movement for subtlety
-      vy: (Math.random() - 0.5) * 0.3,
-    }));
-    setNodes(initialNodes);
-
-    let animationId: number;
-    
-    const animate = () => {
-      setNodes(prevNodes => {
-        const newNodes = prevNodes.map(node => {
-          let newX = node.x + node.vx;
-          let newY = node.y + node.vy;
-          let newVx = node.vx;
-          let newVy = node.vy;
-
-          // Bounce off edges
-          if (newX <= 0 || newX >= window.innerWidth) {
-            newVx = -newVx;
-            newX = Math.max(0, Math.min(window.innerWidth, newX));
-          }
-          if (newY <= 0 || newY >= window.innerHeight) {
-            newVy = -newVy;
-            newY = Math.max(0, Math.min(window.innerHeight, newY));
-          }
-
-          return { ...node, x: newX, y: newY, vx: newVx, vy: newVy };
-        });
-
-        // Calculate connections
-        const newConnections: Connection[] = [];
-        for (let i = 0; i < newNodes.length; i++) {
-          for (let j = i + 1; j < newNodes.length; j++) {
-            const dx = newNodes[i].x - newNodes[j].x;
-            const dy = newNodes[i].y - newNodes[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < connectionDistance) {
-              const opacity = Math.max(0, 1 - distance / connectionDistance) * 0.15; // More subtle
-              newConnections.push({
-                from: i,
-                to: j,
-                opacity
-              });
-            }
-          }
-        }
-        setConnections(newConnections);
-
-        return newNodes;
-      });
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [nodeCount, connectionDistance]);
-
-  return (
-    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-      <svg 
-        className="absolute inset-0 w-full h-full"
-        style={{ zIndex: -1 }}
-      >
-        {/* Render connections with light theme colors */}
-        {connections.map((connection, index) => {
-          const fromNode = nodes[connection.from];
-          const toNode = nodes[connection.to];
-          if (!fromNode || !toNode) return null;
-          
-          return (
-            <motion.line
-              key={`${connection.from}-${connection.to}`}
-              x1={fromNode.x}
-              y1={fromNode.y}
-              x2={toNode.x}
-              y2={toNode.y}
-              stroke="rgba(59, 130, 246, 0.2)"
-              strokeWidth="0.5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: connection.opacity }}
-              transition={{ duration: 0.5 }}
-            />
-          );
-        })}
-        
-        {/* Render nodes with light theme colors */}
-        {nodes.map((node) => (
-          <motion.circle
-            key={node.id}
-            cx={node.x}
-            cy={node.y}
-            r="2"
-            fill="rgba(59, 130, 246, 0.3)"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.8, delay: node.id * 0.15 }}
-          />
-        ))}
-      </svg>
-    </div>
-  );
-}
-
 // Legacy component for backward compatibility
 export function FloatingElements() {
-  return <LightNetworkAnimation nodeCount={6} connectionDistance={120} />;
+  return <LightNetworkAnimation nodeCount={6} />;
 }
